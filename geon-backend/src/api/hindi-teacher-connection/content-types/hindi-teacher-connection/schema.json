@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hindi_teacher_connections",
+  "info": {
+    "singularName": "hindi-teacher-connection",
+    "pluralName": "hindi-teacher-connections",
+    "displayName": "Hindi Teacher Connection",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Desc": {
+      "type": "richtext"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

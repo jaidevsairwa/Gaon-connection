@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "podcast_banners",
+  "info": {
+    "singularName": "podcast-banner",
+    "pluralName": "podcast-banners",
+    "displayName": "podcast-banner",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

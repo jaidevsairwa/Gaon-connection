@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kisaan_connections",
+  "info": {
+    "singularName": "kisaan-connection",
+    "pluralName": "kisaan-connections",
+    "displayName": "Kisaan Connection",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Desc": {
+      "type": "richtext"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

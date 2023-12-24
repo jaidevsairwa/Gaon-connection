@@ -1,0 +1,39 @@
+.image_container{
+    display: flex;
+    gap: 16px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    & .image_box{
+        width: 100%;
+        height: 650px;
+        
+        img{
+            width: 100%;
+            height: 650px;
+        }
+    }
+    .btn{
+        border-radius: 10px;
+        padding: 10px 15px;
+        margin: 20px auto;
+        color:white;
+        background-color: #ff2800;
+    }
+}
+
+@media (max-width: 786px){
+    .image_container{
+        margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    }
+    .image_container .image_box{
+        height: 200px;
+    }
+    .image_container .image_box img{
+        height: 200px;
+    }
+}

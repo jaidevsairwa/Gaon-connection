@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categorydata",
+  "info": {
+    "singularName": "category-data",
+    "pluralName": "categorydata",
+    "displayName": "category-data",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "category_name": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "richtext"
+    },
+    "link": {
+      "type": "string"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "main": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "podcast_categories",
+  "info": {
+    "singularName": "podcast-category",
+    "pluralName": "podcast-categories",
+    "displayName": "create podcast-category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "podcast_cates": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::podcast-cate.podcast-cate",
+      "mappedBy": "podcast_category"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

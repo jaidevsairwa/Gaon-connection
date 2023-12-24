@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "advertisement_banner_2s",
+  "info": {
+    "singularName": "advertisement-banner-2",
+    "pluralName": "advertisement-banner-2s",
+    "displayName": "advertisement banner 2",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

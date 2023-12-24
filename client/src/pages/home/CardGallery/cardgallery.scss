@@ -1,0 +1,159 @@
+.grid_container {
+    display: flex;
+    gap: 78px;
+    margin-left: 40px;
+    margin-right: 40px;
+    height: 600px;
+    margin-bottom: 30px;
+
+    .first_div {
+        overflow: hidden;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        color: black;
+        // height: 600px;
+
+        h1 {
+            font-size: 32px;
+        }
+
+        img {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+            height: 650px;
+        }
+
+        p {
+            width: 595px;
+            color: #000;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+
+    .second_div {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        height: 900px;
+        & .card1 {
+            img {
+                width: 100%;
+                object-fit: cover;
+                height: 225px;
+            }
+
+            h3 {
+                // width: 588px;
+                color: #000;
+                font-size: 22px;
+                margin: 0;
+                font-style: normal;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 786px) {
+    .grid_container {
+        display: flex;
+        flex: 2 1;
+        gap: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 660px;
+
+            // .larger-div {
+            //         height: 600px;
+            //         width: 200px;
+
+            // img {
+            //         width: 100%;
+            //         object-fit: contain;
+            //         // height: 500px;
+            //     }
+            //     }
+        .first_div {
+            width: 100%;
+            display: flex;
+            color: black;
+            height: 150px;
+            width: 200px;
+
+
+            img {
+                width: 100%;
+                object-fit: contain;
+                // height: 500px;
+            }
+
+            h1 {
+                font-size: 18px;
+                width: auto;
+            }
+
+            p {
+                width: auto;
+                color: #000;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+
+        .second_div {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            height: 660px;
+
+            & .card1 {
+                height: 220px;
+
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                    height: 135px;
+                    margin-bottom: 0;
+                }
+
+                h3 {
+                    width: auto;
+                    color: #000;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 600;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .grid_container {
+        .first_div {
+            p {
+                width: auto;
+            }
+
+            .second_div {
+                & .card1 {
+                    h3 {
+                        width: auto;
+                    }
+                }
+
+            }
+        }
+    }
+}

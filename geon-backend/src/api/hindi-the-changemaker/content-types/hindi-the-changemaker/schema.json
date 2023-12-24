@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hindi_the_changemakers",
+  "info": {
+    "singularName": "hindi-the-changemaker",
+    "pluralName": "hindi-the-changemakers",
+    "displayName": "Hindi The Changemaker",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Desc": {
+      "type": "richtext"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

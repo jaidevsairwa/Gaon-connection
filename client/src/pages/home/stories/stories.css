@@ -1,0 +1,14 @@
+.stories{
+  display: flex;
+  justify-content: center;
+  width: 310px;
+  margin: auto;
+  padding: 10px;
+
+}
+.stories video {
+  display: block !important; 
+  margin: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+}

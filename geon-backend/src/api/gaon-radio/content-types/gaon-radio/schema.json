@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gaon_radios",
+  "info": {
+    "singularName": "gaon-radio",
+    "pluralName": "gaon-radios",
+    "displayName": "gaon-radio"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "audio": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.change-maker{
+    display: flex;
+    min-height: 350px;
+    width: 65%;
+    margin: auto;
+    margin-top: 50px;
+}
+.change-maker img{
+    height: 300px;
+}
+.maker-text{
+    width: 70%;
+    color: black;
+    padding: 0 20px;
+    text-align: justify;
+
+}
+
+
+
+@media screen and (max-width:764px) {
+    .change-maker{
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .maker-text{
+        width: 82%;
+    }
+}

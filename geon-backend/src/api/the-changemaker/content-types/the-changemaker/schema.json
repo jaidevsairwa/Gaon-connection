@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "the_changemakers",
+  "info": {
+    "singularName": "the-changemaker",
+    "pluralName": "the-changemakers",
+    "displayName": "the changemaker",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Desc": {
+      "type": "richtext"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

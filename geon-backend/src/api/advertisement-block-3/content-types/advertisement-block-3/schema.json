@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "advertisement_block_3s",
+  "info": {
+    "singularName": "advertisement-block-3",
+    "pluralName": "advertisement-block-3s",
+    "displayName": "advertisement Block 3",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

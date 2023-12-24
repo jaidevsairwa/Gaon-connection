@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "category_hindis",
+  "info": {
+    "singularName": "category-hindi",
+    "pluralName": "category-hindis",
+    "displayName": "create  Category Hindi",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "category_data_hindis": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::hindi-category-data.hindi-category-data",
+      "mappedBy": "create_category_hindi"
+    }
+  }
+}

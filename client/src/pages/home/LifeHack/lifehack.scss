@@ -1,0 +1,68 @@
+// .life_container {
+//   display: flex;
+//   margin-bottom: 61px;
+//   gap: 28px;
+
+//   & .life_card {
+//     width: 33.33%;
+
+//     img {
+//       width: 100%;
+//       height: 586px;
+//       border-radius: 25px;
+//       object-fit: cover;
+//     }
+//   }
+// }
+
+// h2 {
+//   color: #000;
+//   font-size: 36px;
+//   font-style: normal;
+//   font-weight: 600;
+//   line-height: 139.5%;
+// }
+
+.life_container {
+	margin-left: 40px;
+	margin-right: 40px;
+	color: black;
+	.life_container h2 {
+		color: #000;
+	}
+
+	.card {
+		width: 90%;
+		height: 480px;
+		background-color: #fff;
+		border: 1px;
+		margin-bottom: 20px;
+		border-radius: 20px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+		.card-image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			/* Maintain aspect ratio and cover the card */
+			border-radius: 20px;
+		}
+	}
+}
+
+@media (max-width: 786px) {
+	.life_container {
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 10px;
+
+		.card{
+			height: 280px;
+		}
+	}
+  .life_container h2{
+	font-weight: 400;
+    font-size: 22px;
+  }
+
+}

@@ -1,0 +1,64 @@
+.survey_report h1{
+    color: black;
+    text-decoration: underline 5px #fc6224;
+    background-color: #f1f5fa;
+    padding: 22px 50px;
+    margin:  auto auto 50px;
+    /* text-align: ; */
+}
+.pdf_container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.pdf_images{
+    /* display: flex; */
+    object-fit: contain;
+    margin: 50px;
+}
+.pdf_images > img{
+    height: 300px;
+    width: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 10px 36px 0px grey;
+    transition: ease-in-out 0.5s;
+}
+
+@media screen and (max-width:464px) {
+    .survey_report h1{
+        font-size: 30px;
+    }
+    .pdf_container{
+        margin-bottom: 24px;
+    }
+    .pdf_images{
+        margin: 16px auto;
+    }
+    .pdf_images > img{
+        width: 90vw;
+        height: auto;
+        object-fit: cover;
+    }
+}
+@media screen and (max-width:1024px) {
+    .survey_report h1 {
+        font-size: 30px;
+    }
+
+    .pdf_container {
+        /* width: 90vw; */
+        /* flex-direction: column; */
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+    }
+
+    .pdf_images {
+        margin: 16px auto;
+    }
+
+    .pdf_images>img {
+        width: 80vw;
+        height: auto;
+        object-fit: cover;
+    }
+}

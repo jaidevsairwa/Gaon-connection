@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hindi_category_datas",
+  "info": {
+    "singularName": "hindi-category-data",
+    "pluralName": "hindi-category-datas",
+    "displayName": "Category Data Hindi",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Desc": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "create_category_hindi": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category-hindi.category-hindi",
+      "inversedBy": "category_data_hindis"
+    }
+  }
+}
