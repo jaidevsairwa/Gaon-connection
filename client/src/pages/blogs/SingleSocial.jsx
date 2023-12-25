@@ -30,8 +30,6 @@ const SingleSocial = () => {
     margin: "auto",
   };
 
-  const test = '**this is test**'
-
   return (
     <div style={divStyle}>
       <img

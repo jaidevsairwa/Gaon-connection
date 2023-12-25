@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@600&display=swap');
+
+* h1,h2,h3,h4,h5,h6,ul{
+font-family: 'Alegreya', serif;
+}
+
+* p{
+  font-family: 'IM Fell English', serif;
+}
 .header {
   background-color: #fc6224;
   color: white;
@@ -52,6 +61,7 @@
   display: flex;
   flex-grow: 1;
   justify-content: space-between;
+  margin-top: 18px;
 }
 
 .nav li {
@@ -456,10 +466,13 @@
   padding: 20px;
   align-items: center;
   gap: 40px;
-  /* flex-wrap: wrap; */
 }
 
 @media screen and (max-width: 464px) {
+  .strory--container {
+    width: 100%;
+    overflow: scroll;
+  }
   .story_container {
     /* display: absolute; */
     width: 120px;
@@ -571,13 +584,35 @@
   .Story_Modal_2 {
     background-color: transparent !important;
   }
-  .swiper-slide{
+  .swiper-slide {
     padding: 0;
   }
-  .swiper-slide video{
+  .swiper-slide video {
     padding: 0;
     margin: 0;
   }
 }
 
-
+.filteration {
+  background-color: aliceblue;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 20px;
+}
+.filteration ul {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+.filteration ul li {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+.active{
+  color: red;
+  font-size: 22px;
+}

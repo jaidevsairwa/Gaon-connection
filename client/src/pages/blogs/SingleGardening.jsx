@@ -32,7 +32,7 @@ const SingleGardening = () => {
   return (
     <div style={divStyle}>
       <img
-        src={`http://localhost:1337${data?.attributes?.images?.data?.[0]?.attributes?.url}`}
+        src={`http://45.126.126.209:1337${data?.attributes?.images?.data?.[0]?.attributes?.url}`}
         alt=""
         style={imgStyle}
       />

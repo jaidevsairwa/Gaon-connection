@@ -75,7 +75,7 @@ export const single_challenges = async (type, id, setResponse) => {
       setResponse(res.data.data);
     } else {
       const res = await axios.get(
-        `${Baseurl}api/teacher-connection/${id}?populate=*&`,
+        `${Baseurl}api/teacher-connections/${id}?populate=*&`,
         Auth
       );
       setResponse(res.data.data);
@@ -114,7 +114,7 @@ export const single_social = async (type, id, setResponse) => {
       setResponse(res.data.data);
     } else {
       const res = await axios.get(
-        `${Baseurl}api/social-lives/${id}?populate=*`,
+        `${Baseurl}api/aamdani-bhadayes/${id}?populate=*`,
         Auth
         );
       setResponse(res.data.data);
@@ -229,7 +229,7 @@ export const getSingleStory = async (setResponse, id) => {
   } catch { }
 };
 
-export const get_category = async (type, setResponse) => {
+export const get_single_category = async (type, setResponse, id) => {
   try {
     if (type === "hi") {
       const res = await axios.get(
@@ -239,17 +239,17 @@ export const get_category = async (type, setResponse) => {
       setResponse(res.data.data);
     } else {
       const res = await axios.get(
-        `${
-          import.meta.env.VITE_BASE_URL
-        }api/categories?populate[category_data][populate]=*`,
+        `${import.meta.env.VITE_BASE_URL
+        }api/categorydata/${id}?populate=*`,
         Auth
       );
+      console.log(res.data.data);
       setResponse(res.data.data);
     }
-  } catch {}
+  } catch { }
 };
 
-export const get_single_category = async (type, setResponse, id) => {
+export const get_category = async (type, setResponse, id) => {
   try {
     if (type === "hi") {
       const res = await axios.get(
@@ -259,13 +259,34 @@ export const get_single_category = async (type, setResponse, id) => {
       setResponse(res.data.data);
     } else {
       const res = await axios.get(
-        `${Baseurl}api/categories/${id}?populate=*`,
+        `${Baseurl}api/categories/${id}?populate[category_data][populate]=*`,
+        Auth
+      );
+      console.log(res.data.data.attributes);
+      setResponse(res.data.data);
+
+    }
+  } catch { }
+};
+
+export const get_all_category = async (type, setResponse) => {
+  try {
+    if (type === "hi") {
+      const res = await axios.get(
+        `${import.meta.env.VITE_BASE_URL
+        }api/category-hindis?populate[category_data_hindis][populate]=*`,
         Auth
       );
       setResponse(res.data.data);
-      
+    } else {
+      const res = await axios.get(
+        `${import.meta.env.VITE_BASE_URL
+        }api/categories?populate[category_data][populate]=*`,
+        Auth
+      );
+      setResponse(res.data.data);
     }
-  } catch {}
+  } catch { }
 };
 
 export const getPdfs = async (setResponse) => {

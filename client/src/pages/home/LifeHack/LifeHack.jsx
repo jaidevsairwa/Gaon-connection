@@ -47,6 +47,7 @@ const LifeHack = () => {
                 // onClick={() => navigate(`/video-story/${item.id}`)}
                 onClick={() => setModalShow2(true)}
                 style={{ textAlign: "center" }}
+                className="outer-div"
               >
                 <div
                   className="story_container"
@@ -54,9 +55,7 @@ const LifeHack = () => {
                     backgroundImage: `url(${base}${item?.attributes?.images?.data?.[0]?.attributes?.url})`,
                   }}
                 ></div>
-                <span style={{ color: "#000", fontSize: "20px" }}>
-                  {item.attributes.title}
-                </span>
+               
               </div>
             ))}
           </div>

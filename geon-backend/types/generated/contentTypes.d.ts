@@ -724,6 +724,7 @@ export interface ApiAdvertisementBanner1AdvertisementBanner1
   attributes: {
     Title: Attribute.String;
     image: Attribute.Media & Attribute.Required;
+    link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -757,6 +758,7 @@ export interface ApiAdvertisementBanner2AdvertisementBanner2
   attributes: {
     Title: Attribute.String;
     image: Attribute.Media & Attribute.Required;
+    link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -790,6 +792,7 @@ export interface ApiAdvertisementBlock1AdvertisementBlock1
   attributes: {
     Title: Attribute.String;
     image: Attribute.Media & Attribute.Required;
+    link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

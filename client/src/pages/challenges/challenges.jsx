@@ -10,9 +10,9 @@ const Daily = () => {
   const navigate = useNavigate();
 const { selectedLanguage } = useLanguage();
 
-//  useEffect(() => {
-//   get_challenges(selectedLanguage , setdata)
-//  },[selectedLanguage])
+ useEffect(() => {
+  get_challenges(selectedLanguage , setdata)
+ },[selectedLanguage])
 
   return (
     <div className="article_div">
@@ -32,12 +32,9 @@ const { selectedLanguage } = useLanguage();
             <div className="article_content">
               <a className="heading-title">{i?.attributes?.Title} </a>
               <p className="heading-article">
-                <ReactMarkdown>
-                {i?.attributes?.Desc?.slice(0, 300)}
-                </ReactMarkdown>
+                <ReactMarkdown >{i?.attributes?.Desc?.slice(0, 300)}</ReactMarkdown>
               </p>
             </div>
-            <Card title={i?.attributes?.Titlle} />
           </div>
         ))}
       </div>

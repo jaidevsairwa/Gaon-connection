@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
 import logo from "../assets/lg.png";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [selectedLanguage, setSelectedLanguage] = useState('English');
+
+  const handleLanguageChange = (e) => {
+    setSelectedLanguage(e.target.value);
+  };
   return (
     <div>
       <header className="header">
@@ -39,7 +44,7 @@ const Header = () => {
               <a href="/survey-report">Surverys & Reports</a>
             </li>
             <li>
-              <a href="/change-maker">Change Maker</a>
+              <a href="/the-changemakers">Change Maker</a>
             </li>
             <li>
               <a href="#">Latest News</a>

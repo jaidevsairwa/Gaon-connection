@@ -24,7 +24,7 @@ import {
   getBlockAdd6,
   getPdfs,
   getStory,
-  get_category,
+  get_all_category,
   get_challenges,
   get_gardening,
   get_social,
@@ -57,7 +57,6 @@ const Home = () => {
   const navigate = useNavigate();
   const [id, setid] = useState("");
 
-
   // useEffect(() => {
   //   fetchJSON("adds?populate=*", "GET", "").then((data) => {
   //     setAds1(data.data);
@@ -78,15 +77,15 @@ const Home = () => {
 
   useEffect(() => {
     fetchDaily();
-    // get_challenges(selectedLanguage, setChallenges, setSingleChallenges);
-    // get_social(selectedLanguage, setSocialLife, setSingleSocial);
-    // get_gardening(selectedLanguage, setGardening, setSingleGarden);
-    get_category(selectedLanguage, setCategory);
+    get_challenges(selectedLanguage, setChallenges, setSingleChallenges);
+    get_social(selectedLanguage, setSocialLife, setSingleSocial);
+    get_gardening(selectedLanguage, setGardening, setSingleGarden);
+    get_all_category(selectedLanguage, setCategory);
   }, [selectedLanguage]);
 
   useEffect(() => {
-    // getAdd1(setAdd);
-    // getAdd2(setAdd2);
+    getAdd1(setAdd);
+    getAdd2(setAdd2);
     // getAdd3(setAdd3);
     getStory(setStory);
     getPdfs(setPdfs);
@@ -144,7 +143,6 @@ const Home = () => {
 
   const [modalShow, setModalShow] = useState(false);
 
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -177,8 +175,8 @@ const Home = () => {
       <CardImage data={add} type={"images"} />
       <ImageBox
         main_heading="The Changemakers"
-        heading="बागवानी और खेती"
-        title={singleGarden?.attributes?.Titlle}
+        heading={singleGarden?.attributes?.Title}
+        title={singleGarden?.attributes?.Title}
         desc={singleGarden?.attributes?.Desc}
         image={`${base}${singleGarden?.attributes?.images?.data?.[0]?.attributes?.url}`}
         link={`/the-changemakers/${singleGarden.id}`}
@@ -228,11 +226,11 @@ const Home = () => {
           {story?.slice(0, 6)?.map((item) => (
             <div
               key={item.id}
-              // onClick={() => navigate(`/story/${item.id}`)}
               onClick={() => {
                 setid(item.id);
                 setModalShow(true);
               }}
+              className="outer-div"
               style={{ textAlign: "center" }}
             >
               <div
@@ -241,9 +239,9 @@ const Home = () => {
                   backgroundImage: `url(${base}${item?.attributes?.images?.data?.[0]?.attributes?.url})`,
                 }}
               ></div>
-              <span style={{ color: "#000", fontSize: "20px" }}>
+              {/* <span style={{ color: "#000", fontSize: "20px" }}>
                 {item.attributes.name}
-              </span>
+              </span> */}
             </div>
           ))}
         </div>
@@ -259,7 +257,7 @@ const Home = () => {
           title={singleChallenges?.attributes?.Title}
           desc={singleChallenges?.attributes?.Desc?.slice(0, 200)}
           image={`${base}${singleChallenges?.attributes?.Images?.data?.[0]?.attributes?.url}`}
-          link={`/challenges-item/${singleChallenges?.id}`}
+          link={`/teacher-connection/${singleChallenges?.id}`}
         />
       )}
 
@@ -312,7 +310,7 @@ const Home = () => {
       {/* Social Life */}
       {sinleSocila && (
         <ImageBox
-          main_heading="Aam Dani Bhadae"
+          main_heading="Aamdani Bhadaye"
           heading="सामाजिक जीवन"
           title={sinleSocila?.Title}
           desc={sinleSocila?.Desc}
@@ -329,13 +327,8 @@ const Home = () => {
 
       {/* --------- */}
       <CardImage data={add3} type={"image"} />
-      {/* <Video /> */}
-      {/* <Images /> */}
-
-      <CardGallery />
-
-      {/* gardening */}
-
+      {/* <CardGallery /> */}
+      
       <ImageBox main_heading={"Survey and Reports"} />
       {pdfs?.length > 0 && (
         <div className="container_cardlist">
@@ -368,7 +361,7 @@ const Home = () => {
 
           <button
             className="btn"
-            onClick={() => navigate(`/teacher-connection`)}
+            onClick={() => navigate(`/survey-report`)}
           >
             View All
           </button>
@@ -379,37 +372,88 @@ const Home = () => {
       {category?.length > 0 &&
         category?.map((i, index) => (
           <>
-            <ImageBox
-              main_heading={i?.attributes?.name}
-              title={i?.attributes?.category_data?.data?.[0]?.attributes?.Name}
-              desc={i?.attributes?.category_data?.data?.[0]?.attributes?.desc}
-              image={`${base}${i?.attributes?.category_data?.data?.[0]?.attributes?.images?.data?.[0]?.attributes?.url}`}
-            />
+            {selectedLanguage === "hi" ? (
+              <ImageBox
+                main_heading={i?.attributes?.name}
+                title={i?.attributes?.category_data_hindis?.data?.[0]?.attributes?.Name}
+                desc={i?.attributes?.category_data_hindis?.data?.[0]?.attributes?.desc}
+                image={`${base}${i?.attributes?.category_data_hindis?.data?.[0]?.attributes?.images?.data?.[0]?.attributes?.url}`}
+                link={`/indi-category/${i?.attributes?.category_data_hindis?.data[0]?.id}`}
+              />
+            ) : (
+                <ImageBox
+                  main_heading={i?.attributes?.name}
+                  title={i?.attributes?.category_data?.data?.[0]?.attributes?.Name}
+                  desc={i?.attributes?.category_data?.data?.[0]?.attributes?.desc}
+                  image={`${base}${i?.attributes?.category_data?.data?.[0]?.attributes?.images?.data?.[0]?.attributes?.url}`}
+                  link={`/indi-category/${i?.attributes?.category_data?.data[0]?.id}`}
+                />
+            )}
 
             <div className="container_cardlist">
-              <Carousel
-                draggable={true}
-                customTransition="all .5"
-                transitionDuration={500}
-                fade={true}
-                arrows={true}
-                responsive={responsive}
-                autoplay={true}
-                autoplaySpeed={500}
-              >
-                {i?.attributes?.category_data?.data?.map((item) => (
-                  <div className="card" key={index}>
-                    <img
-                      src={`${base}${item?.attributes?.images?.data?.[0]?.attributes?.url}`}
-                      alt=""
-                      className="card-image"
-                    />
-                    <div className="card-content">
-                      <h2 className="card-heading">{item?.attributes?.Name}</h2>
+              {selectedLanguage ==="hi" ? (
+                <Carousel
+                  draggable={true}
+                  customTransition="all .5"
+                  transitionDuration={500}
+                  fade={true}
+                  arrows={true}
+                  responsive={responsive}
+                  autoplay={true}
+                  autoplaySpeed={500}
+                >
+                  {i?.attributes?.category_data_hindis?.data?.map((item) => (
+                    <div className="card" key={index} onClick={() => navigate(`/indi-category/${item?.id}`)}>
+                      <img
+                        src={`${base}${item?.attributes?.images?.data?.[0]?.attributes?.url}`}
+                        alt=""
+                        className="card-image"
+                      />
+                      <div className="card-content">
+                        <h2 className="card-heading">{item?.attributes?.Name}</h2>
+                        <span
+                          style={{ color: "#0CC5FF" }}
+                          onClick={() => navigate(`/indi-category/${item?.id}`)}
+                        >
+                          {" "}
+                          Read More
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  ))}
+                </Carousel>
+              ):(
+                  <Carousel
+                draggable = { true }
+                customTransition = "all .5"
+                transitionDuration = { 500 }
+                fade = { true }
+                arrows = { true }
+                responsive = { responsive }
+                autoplay = { true }
+                autoplaySpeed = { 500 }
+                  >
+                {i?.attributes?.category_data?.data?.map((item) => (
+              <div className="card" key={index} onClick={() => navigate(`/indi-category/${item?.id}`)}>
+                <img
+                  src={`${base}${item?.attributes?.images?.data?.[0]?.attributes?.url}`}
+                  alt=""
+                  className="card-image"
+                />
+                <div className="card-content">
+                  <h2 className="card-heading">{item?.attributes?.Name}</h2>
+                  <span
+                    style={{ color: "#0CC5FF" }}
+                    onClick={() => navigate(`/indi-category/${item?.id}`)}
+                  >
+                    {" "}
+                    Read More
+                  </span>
+                </div>
+              </div>
                 ))}
-              </Carousel>
+            </Carousel>
+              )}
 
               <button
                 className="btn"
@@ -420,9 +464,6 @@ const Home = () => {
             </div>
           </>
         ))}
-
-      {/* <CardImage />
-      <SolarHelp /> */}
     </div>
   );
 };

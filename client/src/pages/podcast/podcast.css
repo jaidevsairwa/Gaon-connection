@@ -9,6 +9,13 @@
   object-fit: cover;
 }
 
+@media (max-width : 768px) {
+  .test img{
+    height: 200px;
+  }
+  
+}
+
 .parent {
   color: white;
   /* height: 42vh; */

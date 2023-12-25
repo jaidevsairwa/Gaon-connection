@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import { useLanguage } from "../LanguageContext";
 import "./index.css";
 import facebook from "../assets/icons/facebook.svg";
-import linkedin from "../assets/icons/linkedin.svg";
 import youtube from "../assets/icons/youtube.svg";
 import phone from "../assets/icons/phone.svg";
 import insta from "../assets/icons/insta.svg";
 
 const Contact = () => {
-	// const [selectedLanguage, setSelectedLanguage] = useState("English");
 	
 	const { selectedLanguage, setSelectedLanguage } = useLanguage();
 	if(selectedLanguage==="en")

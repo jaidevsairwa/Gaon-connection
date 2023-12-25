@@ -6,7 +6,7 @@ import Header from "./components/header";
 import MobileHeader from "./pages/home/Header/header";
 import Contact from "./components/contact";
 import Footer from "./components/Footer/Footer";
-// import './App.css'
+
 const App = () => {
 	const location = useLocation();
 

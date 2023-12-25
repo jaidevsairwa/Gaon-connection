@@ -1,46 +1,39 @@
 import React from "react";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
-import ReactMarkdown from 'react-markdown'
 
 const ImageBox = (props) => {
   const navigate = useNavigate();
-
   return (
     <>
       <>
-        {props.main_heading && (
-          <h1 className="imageBox_header">{props.main_heading}</h1>
+        {props?.main_heading && (
+          <h1 className="imageBox_header">{props?.main_heading}</h1>
         )}
         <div className="container-box">
-          {props.image && (
+          {props?.image && (
             <div className="image-container-box">
               <img
-                src={props.image}
+                src={props?.image}
                 alt="Description of the image"
                 className="image-box"
               />
             </div>
           )}
           <div className="text-container-box">
-          {props.heading ||
-            props.title ||
-            props?.desc ||
-            (props?.link && (
-              <div>
-                  {props.heading && <h1>{props.heading}</h1>}
-                  {props.title && <h2>{props.title?.slice(0, 100)}...</h2>}
-                  {props?.desc && <p><ReactMarkdown>{props?.desc?.slice(0, 100)} </ReactMarkdown>...</p>}
-                  {props?.link && (
-                    <button
-                      onClick={() => navigate(props.link)}
-                      className="read-more-button-box"
-                    >
-                      Read More
-                    </button>
-                  )}
-                </div>
-            ))}
+            <div>
+              {/* {props?.heading && <h1>{props?.heading}</h1>} */}
+              {props?.title && <h2>{props?.title?.slice(0, 100)}...</h2>}
+              <p>{props?.desc?.slice(0, 100)}</p>
+              {props?.link && (
+                <button
+                  onClick={() => navigate(props.link)}
+                  className="read-more-button-box"
+                >
+                  Read More
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </>

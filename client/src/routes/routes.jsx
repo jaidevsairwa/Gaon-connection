@@ -23,6 +23,7 @@ import SurveyReport from "../pages/surveyReport/survey";
 import Category from "../pages/Category/Category";
 import AllStories from "../pages/home/stories/AllStories";
 import AllHack from "../pages/home/LifeHack/AllHack";
+import SingleCat from "../pages/Category/SingleCat";
 
 export const routes = createBrowserRouter([
   {
@@ -117,6 +118,10 @@ export const routes = createBrowserRouter([
       {
         path:"/category/:id",
         element:<Category />
+      },
+      {
+        path:"/indi-category/:id",
+        element:<SingleCat />
       }
     ],
   },

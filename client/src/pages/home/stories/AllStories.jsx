@@ -63,9 +63,6 @@ const AllStories = () => {
             <p style={{ color: "red", fontSize: "20px", fontWeight: "700" }}>
               {item?.attributes?.story_category?.data?.attributes?.category}
             </p>
-            <span style={{ color: "#000", fontSize: "20px" }}>
-              {item.attributes.name}
-            </span>
           </div>
         ))}
       </div>
