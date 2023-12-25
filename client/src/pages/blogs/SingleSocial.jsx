@@ -22,7 +22,8 @@ const SingleSocial = () => {
     padding: "20px",
     textAlign: " center",
     color:"black",
-    backgroundColor:"#f1f5fa"
+    backgroundColor:"#f1f5fa",
+    minHeight:"90vh"
   };
 
   const imgStyle = {

@@ -15,7 +15,7 @@ const Social = () => {
   }, [selectedLanguage]);
 
   return (
-    <div className="article_div">
+    <div className="article_div" >
       <div className="article_body">
         <h4 style={{ color: "black" }}> AAMDANI Bhadaye</h4>
         {data?.map((i, index) => (
@@ -23,7 +23,7 @@ const Social = () => {
             className="article_card"
             key={index}
             style={{ fontFamily: "Poppins" }}
-            onClick={() => navigate(`/social-life-item/${i.id}`)}
+            onClick={() => navigate(`/aamdani-bhadaye-item/${i.id}`)}
           >
             <img
               src={`http://45.126.126.209:1337${i?.attributes?.images?.data?.[0]?.attributes?.url}`}

@@ -88,7 +88,7 @@ export const get_social = async (type, setResponse, setSingle) => {
   try {
     if (type === "hi") {
       const res = await axios.get(
-        `${Baseurl}api/hindi-aamdani-bhadayes?populate=**`,
+        `${Baseurl}api/hindi-aamdani-bhadayes?populate=*`,
         Auth
       );
       setResponse(res.data.data);
@@ -165,57 +165,57 @@ export const single_gardening = async (type, id, setResponse) => {
 export const getAdd1 = async (setResponse) => {
   try {
     const response = await axios.get(`${Baseurl}api/advertisement-banner-1?populate=*`, Auth);
-    setResponse(response.data.data);
+    setResponse(response.data.data.attributes);
   } catch { }
 };
 
 export const getAdd2 = async (setResponse) => {
   try {
     const response = await axios.get(`${Baseurl}api/advertisement-banner-2?populate=*`, Auth);
-    setResponse(response.data.data);
+    setResponse(response.data.data.attributes);
   } catch { }
 };
 
 export const getBlockAdd1 = async (setResponse) => {
   try {
     const response = await axios.get(`${Baseurl}api/advertisement-block-1?populate=*`, Auth);
-    setResponse(response.data.data);
+    setResponse(response.data.data.attributes);
   } catch { }
 };
 export const getBlockAdd2 = async (setResponse) => {
   try {
     const response = await axios.get(`${Baseurl}api/advertisement-block-2?populate=*`, Auth);
-    setResponse(response.data.data);
+    setResponse(response.data.data.attributes);
   } catch { }
 };
 export const getBlockAdd3 = async (setResponse) => {
   try {
     const response = await axios.get(`${Baseurl}api/advertisement-block-3?populate=*`, Auth);
-    setResponse(response.data.data);
+    setResponse(response.data.data.attributes);
   } catch { }
 };
 export const getBlockAdd4 = async (setResponse) => {
   try {
     const response = await axios.get(`${Baseurl}api/advertisement-block-4?populate=*`, Auth);
-    setResponse(response.data.data);
+    setResponse(response.data.data.attributes);
   } catch { }
 };
 export const getBlockAdd5 = async (setResponse) => {
   try {
     const response = await axios.get(`${Baseurl}api/advertisement-block-5?populate=*`, Auth);
-    setResponse(response.data.data);
+    setResponse(response.data.data.attributes);
   } catch { }
 };
 export const getBlockAdd6 = async (setResponse) => {
   try {
     const response = await axios.get(`${Baseurl}api/advertisement-block-6?populate=*`, Auth);
-    setResponse(response.data.data);
+    setResponse(response.data.data.attributes);
   } catch { }
 };
 export const getStory = async (setResponse) => {
   try {
     const response = await axios.get(`${Baseurl}api/stories?populate=*`, Auth);
-    setResponse(response.data.data);
+    setResponse(response.data.data.attributes);
   } catch {}
 };
 
@@ -253,7 +253,7 @@ export const get_category = async (type, setResponse, id) => {
   try {
     if (type === "hi") {
       const res = await axios.get(
-        `${Baseurl}api/category-Hindis/${id}?populate=*`,
+        `${Baseurl}api/category-hindis/${id}?populate[category_data_hindis][populate]=*`,
         Auth
       );
       setResponse(res.data.data);

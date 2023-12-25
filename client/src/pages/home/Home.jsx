@@ -7,10 +7,12 @@ import CardImage from "./CardImage/CardImage";
 import CardGallery from "./CardGallery/CardGallery";
 import TopImages from "./mobileTop/top";
 import audioFile from "../../assets/audio/HueBechain.mp3";
+import Insights from "../../components/insights"
 import Audio from "./Audio/Audio";
 import { fetchJSON } from "../../api";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
+import {Tweet} from 'react-tweet'
 import {
   Daily_News_English,
   Daily_News_In_Hindi,
@@ -46,11 +48,15 @@ const Home = () => {
   const [challenges, setChallenges] = useState([]);
   const [singleChallenges, setSingleChallenges] = useState({});
   const [daily, setDaily] = useState([]);
-  const [Ads1, setAds1] = useState([]);
-  const [add, setAdd] = useState([]);
-  const [add2, setAdd2] = useState([]);
-  const [add3, setAdd3] = useState([]);
-  const [category, setCategory] = useState([]);
+  const [banner1, setBanner1] = useState({});
+  const [banner2, setBanner2] = useState({});
+  const [block1, setBlock1] = useState({})
+  const [block2, setBlock2] = useState({})
+  const [block3, setBlock3] = useState({})
+  const [block4, setBlock4] = useState({})
+  const [block5, setBlock5] = useState({})
+  const [block6, setBlock6] = useState({})
+  const [category, setCategory] = useState({});
   const [story, setStory] = useState([]);
   const { selectedLanguage } = useLanguage();
   const [pdfs, setPdfs] = useState([]);
@@ -84,12 +90,17 @@ const Home = () => {
   }, [selectedLanguage]);
 
   useEffect(() => {
-    getAdd1(setAdd);
-    getAdd2(setAdd2);
-    // getAdd3(setAdd3);
+    getAdd1(setBanner1);
+    getAdd2(setBanner2);
+    getBlockAdd1(setBlock1);
+    getBlockAdd2(setBlock2)
+    getBlockAdd3(setBlock3)
+    getBlockAdd4(setBlock4)
+    getBlockAdd5(setBlock4)
+    getBlockAdd6(setBlock6)
     getStory(setStory);
     getPdfs(setPdfs);
-  }, []);
+  }, {});
 
   const responsive = {
     superLargeDesktop: {
@@ -115,7 +126,7 @@ const Home = () => {
     selectedLanguage === "hi" ? "किसान कनेक्शन" : "Kisaan Connection";
 
   const teacherText =
-    selectedLanguage === "hi" ? "उत्पादन " : "Teacher Connection";
+    selectedLanguage === "hi" ? "टीचर कनेक्शन " : "Teacher Connection";
 
   const base = "http://45.126.126.209:1337";
 
@@ -156,6 +167,8 @@ const Home = () => {
       <Audio audioFile={audioFile} />
       <TopImages />
       <HomeImage />
+      <Insights image={banner1?.image?.data?.attributes?.url} />
+      {/* <Tweet id="1523158774566989825" /> */}
 
       {/* Daily Life */}
 
@@ -172,7 +185,7 @@ const Home = () => {
         indiLink={"/kisaan-connection"}
       />
       {/* ------- */}
-      <CardImage data={add} type={"images"} />
+      <CardImage ad1={block1} ad2={block2} />
       <ImageBox
         main_heading="The Changemakers"
         heading={singleGarden?.attributes?.Title}
@@ -200,7 +213,7 @@ const Home = () => {
                 className="card-image"
               />
               <div className="card-content">
-                <h2 className="card-heading">{i?.attributes?.Titlle}</h2>
+                <h2 className="card-heading">{i?.attributes?.Title}</h2>
                 <p className="card-description">
                   <span
                     style={{ color: "#0CC5FF" }}
@@ -305,8 +318,9 @@ const Home = () => {
         </div>
       )}
 
-      <CardImage data={add2} type={"image"} />
+      <CardImage ad1={block3} ad2={block4}/>
       <LifeHack />
+      <Insights image={banner2?.image?.data?.attributes?.url} />
       {/* Social Life */}
       {sinleSocila && (
         <ImageBox
@@ -325,8 +339,7 @@ const Home = () => {
         />
       )}
 
-      {/* --------- */}
-      <CardImage data={add3} type={"image"} />
+      <CardImage ad1={block5} ad2={block6} />
       {/* <CardGallery /> */}
       
       <ImageBox main_heading={"Survey and Reports"} />
@@ -372,25 +385,26 @@ const Home = () => {
       {category?.length > 0 &&
         category?.map((i, index) => (
           <>
-            {selectedLanguage === "hi" ? (
+            {selectedLanguage === "hi" ?
+             (
               <ImageBox
                 main_heading={i?.attributes?.name}
                 title={i?.attributes?.category_data_hindis?.data?.[0]?.attributes?.Name}
-                desc={i?.attributes?.category_data_hindis?.data?.[0]?.attributes?.desc}
+                desc={i?.attributes?.category_data_hindis?.data?.[0]?.attributes?.desc.slice(0, 200)}
                 image={`${base}${i?.attributes?.category_data_hindis?.data?.[0]?.attributes?.images?.data?.[0]?.attributes?.url}`}
-                link={`/indi-category/${i?.attributes?.category_data_hindis?.data[0]?.id}`}
+                link={`/indi-category/${i?.attributes?.category_data_hindis?.data?.[0]?.id}`}
               />
             ) : (
                 <ImageBox
                   main_heading={i?.attributes?.name}
                   title={i?.attributes?.category_data?.data?.[0]?.attributes?.Name}
-                  desc={i?.attributes?.category_data?.data?.[0]?.attributes?.desc}
+                  desc={i?.attributes?.category_data?.data?.[0]?.attributes?.desc.slice(0, 200)}
                   image={`${base}${i?.attributes?.category_data?.data?.[0]?.attributes?.images?.data?.[0]?.attributes?.url}`}
-                  link={`/indi-category/${i?.attributes?.category_data?.data[0]?.id}`}
+                  link={`/indi-category/${i?.attributes?.category_data?.data?.[0]?.id}`}
                 />
             )}
 
-            <div className="container_cardlist">
+            <div className="container_cardlist" key={index}>
               {selectedLanguage ==="hi" ? (
                 <Carousel
                   draggable={true}
@@ -402,7 +416,7 @@ const Home = () => {
                   autoplay={true}
                   autoplaySpeed={500}
                 >
-                  {i?.attributes?.category_data_hindis?.data?.map((item) => (
+                  {i?.attributes?.category_data_hindis?.data?.map((item,index) => (
                     <div className="card" key={index} onClick={() => navigate(`/indi-category/${item?.id}`)}>
                       <img
                         src={`${base}${item?.attributes?.images?.data?.[0]?.attributes?.url}`}

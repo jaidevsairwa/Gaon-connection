@@ -58,7 +58,7 @@ const ImageGallery = ({ data }) => {
     <>
       {data?.map((item, index) => (
         <ImageCard
-          key={`Image${index}`}
+          key={index}
           image={item?.attributes?.image?.data}
         />
       ))}
@@ -66,11 +66,11 @@ const ImageGallery = ({ data }) => {
   );
 };
 
-const ImageCard = ({ image, key }) => {
+const ImageCard = ({ image, index }) => {
   return (
     <div className="carousel_container">
       {image?.map((item) => (
-        <div className="picture-container" key={key}>
+        <div className="picture-container" key={index}>
           <img
             src={`http://45.126.126.209:1337${item?.attributes?.url}`}
             alt=""
