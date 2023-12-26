@@ -1,5 +1,4 @@
-import React, { useRef } from "react";
-import Slider from "react-slick";
+import React, { useRef, useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import close from "../../../assets/x.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,29 +7,31 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 const ShortsCanvas = ({ show, setShow, data }) => {
-  const sliderRef = useRef(null);
-
-  const settings = {
-    dots: false,
-    infinite: false,
-    speed: 300,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    vertical: true,
-    swipeToSlide: true,
-    verticalSwiping: true,
-    arrows: false,
-  };
-
-  // const handleSwipe = (e) => {
-  //   if (e.deltaY < 0) {
-  //     sliderRef.current.slickPrev(); // Swipe-up action
-  //   } else if (e.deltaY > 0) {
-  //     sliderRef.current.slickNext(); // Swipe-down action
-  //   }
-  // };
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeVideo, setActiveVideo] = useState(null);
+  const swiperRef = useRef(null);
 
   const base = "http://45.126.126.209:1337";
+
+  useEffect(() => {
+    if (activeVideo) {
+      activeVideo.play();
+      pauseOtherVideos(activeVideo);
+    }
+  }, [activeIndex, activeVideo]);
+
+  const handleSlideChange = (swiper) => {
+    setActiveIndex(swiper.activeIndex);
+  };
+
+  const pauseOtherVideos = (currentVideo) => {
+    const videos = document.querySelectorAll(".video-player");
+    videos.forEach((video) => {
+      if (video !== currentVideo) {
+        video.pause();
+      }
+    });
+  };
 
   return (
     <Modal
@@ -41,9 +42,12 @@ const ShortsCanvas = ({ show, setShow, data }) => {
       }}
       style={{ padding: 0 }}
     >
-      <Modal.Body className="Story-Modal Story_Modal_2" style={{ background: "#0B1F34" }}>
+      <Modal.Body
+        className="Story-Modal Story_Modal_2"
+        style={{ background: "#0B1F34" }}
+      >
         <div className="close">
-          <img src={close} onClick={() => setShow(false)} />
+          <img src={close} onClick={() => setShow(false)} alt="Close" />
         </div>
 
         <Swiper
@@ -53,16 +57,23 @@ const ShortsCanvas = ({ show, setShow, data }) => {
           mousewheel={true}
           modules={[Mousewheel, Pagination]}
           className="mySwiper"
+          onSlideChange={(swiper) => handleSlideChange(swiper)}
+          ref={swiperRef}
         >
-          {data?.map((item) => (
-            <SwiperSlide>
-              <div key={item.id}>
-                <video autoPlay>
-                  <source
-                    src={
-                      base +
-                      item?.attributes?.videos?.data?.[0]?.attributes?.url
+          {data?.map((item, index) => (
+            <SwiperSlide key={item.id}>
+              <div>
+                <video
+                  autoPlay={activeIndex === index}
+                  className="video-player"
+                  ref={(el) => {
+                    if (activeIndex === index) {
+                      setActiveVideo(el);
                     }
+                  }}
+                >
+                  <source
+                    src={base + item?.attributes?.videos?.data?.[0]?.attributes?.url}
                     type="video/mp4"
                   />
                 </video>
@@ -70,8 +81,6 @@ const ShortsCanvas = ({ show, setShow, data }) => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-       
       </Modal.Body>
     </Modal>
   );

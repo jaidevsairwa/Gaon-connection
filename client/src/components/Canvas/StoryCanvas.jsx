@@ -55,7 +55,7 @@ export const StoryCanvas = ({ show, setShow, id }) => {
         <div className="close">
           <img src={close} onClick={() => setShow(false)} />
         </div>
-      
+
         <div className="stories">
           {images?.length > 0 && (
             <React.Fragment>

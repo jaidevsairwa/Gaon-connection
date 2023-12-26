@@ -36,7 +36,7 @@ export const Single_News = async (type, id, setResponse) => {
   try {
     if (type === "hi") {
       const res = await axios.get(
-        `${Baseurl}api/hindi-daily-lives/${id}?populate=*`,
+        `${Baseurl}api/hindi-kisaan-connections/${id}?populate=*`,
         Auth
       );
       setResponse(res.data.data);
@@ -215,7 +215,7 @@ export const getBlockAdd6 = async (setResponse) => {
 export const getStory = async (setResponse) => {
   try {
     const response = await axios.get(`${Baseurl}api/stories?populate=*`, Auth);
-    setResponse(response.data.data.attributes);
+    setResponse(response.data.data);
   } catch {}
 };
 
