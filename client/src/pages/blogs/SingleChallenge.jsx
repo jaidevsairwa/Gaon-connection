@@ -28,6 +28,7 @@ const SingleChallenge = () => {
   const imgStyle = {
     maxWidth: "100%",
     margin: "auto",
+    width:"100%"
   };
 
   return (

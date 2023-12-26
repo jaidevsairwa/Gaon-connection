@@ -127,7 +127,7 @@ export const get_gardening = async (type, setResponse, setSingle) => {
   try {
     if (type === "hi") {
       const res = await axios.get(
-        `${Baseurl}api/hindi-the-changemakers?populate=**`,
+        `${Baseurl}api/hindi-the-changemakers?populate=*`,
         Auth
       );
       setResponse(res.data.data);
