@@ -252,9 +252,6 @@ const Home = () => {
                   backgroundImage: `url(${base}${item?.attributes?.images?.data?.[0]?.attributes?.url})`,
                 }}
               ></div>
-              {/* <span style={{ color: "#000", fontSize: "20px" }}>
-                {item.attributes.name}
-              </span> */}
             </div>
           ))}
         </div>

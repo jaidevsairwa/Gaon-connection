@@ -18,10 +18,10 @@ const AllStories = () => {
   const filterData = !query
     ? story
     : story?.filter((i) =>
-        i?.attributes?.story_category?.data?.attributes?.category
-          ?.toLowerCase()
-          ?.includes(query?.toLowerCase())
-      );
+      i?.attributes?.story_category?.data?.attributes?.category
+        ?.toLowerCase()
+        ?.includes(query?.toLowerCase())
+    );
 
   return (
     <div>
