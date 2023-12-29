@@ -15,7 +15,6 @@
 	background-color: #f1f5fa;
 	margin: auto;
 	width: 70%;
-	height: 100vh;
 	
 }
 .article_card{
@@ -94,6 +93,9 @@
 	font-weight: 400;
 	line-height: normal;
 }
+.author h6{
+	color: red;
+}
 
 @media screen and (max-width:764px) {
 	.article_div {
@@ -113,6 +115,7 @@
 			background-color: #f1f5fa;
 			margin: auto;
 			width: 100%;
+			min-height: 80vh;
 			/* text-overflow: wrap; */
 		}
 	

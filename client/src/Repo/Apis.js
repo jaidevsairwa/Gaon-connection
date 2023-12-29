@@ -32,19 +32,31 @@ export const Daily_News_English = async (setResponse, setSingle) => {
   } catch {}
 };
 
-export const Single_News = async (type, id, setResponse) => {
+export const Single_News = async (type, id, setResponse,setUser) => {
   try {
     if (type === "hi") {
       const res = await axios.get(
         `${Baseurl}api/hindi-kisaan-connections/${id}?populate=*`,
         Auth
       );
+      const usr = res.data.data.attributes.user_info.data.id
+      const userRes = await axios.get(
+        `${Baseurl}api/user-infos/${usr}?populate[personalPhoto]=*`,
+        Auth
+      );
+      setUser(userRes.data.data);
       setResponse(res.data.data);
     } else {
       const res = await axios.get(
         `${Baseurl}api/kisaan-connections/${id}?populate=*&`,
         Auth
       );
+      const usr = res.data.data.attributes.user_info.data.id
+      const userRes = await axios.get(
+        `${Baseurl}api/user-infos/${usr}?populate[personalPhoto]=*`,
+        Auth
+      );
+      setUser(userRes.data.data);
       setResponse(res.data.data);
     }
   } catch {}
@@ -65,19 +77,32 @@ export const get_challenges = async (type, setResponse, setSingle) => {
   } catch {}
 };
 
-export const single_challenges = async (type, id, setResponse) => {
+export const single_challenges = async (type, id, setResponse,setUser) => {
   try {
     if (type === "hi") {
       const res = await axios.get(
         `${Baseurl}api/hindi-teacher-connections/${id}?populate=*`,
         Auth
       );
+      const usr = res.data.data.attributes.user_info.data.id
+      const userRes = await axios.get(
+        `${Baseurl}api/user-infos/${usr}?populate[personalPhoto]=*`,
+        Auth
+      );
+      setUser(userRes.data.data);
       setResponse(res.data.data);
     } else {
       const res = await axios.get(
         `${Baseurl}api/teacher-connections/${id}?populate=*&`,
         Auth
       );
+      const usr = res.data.data.attributes.user_info.data.id
+      const userRes = await axios.get(
+        `${Baseurl}api/user-infos/${usr}?populate[personalPhoto]=*`,
+        Auth
+      );
+      setUser(userRes.data.data);
+      console.log(userRes.data.data);
       setResponse(res.data.data);
     }
   } catch {}
@@ -104,19 +129,31 @@ export const get_social = async (type, setResponse, setSingle) => {
   } catch {}
 };
 
-export const single_social = async (type, id, setResponse) => {
+export const single_social = async (type, id, setResponse, setUser ) => {
   try {
     if (type === "hi") {
       const res = await axios.get(
         `${Baseurl}api/hindi-aamdani-bhadayes/${id}?populate=*`,
         Auth
       );
+      const usr = res.data.data.attributes.user_info.data.id
+      const userRes = await axios.get(
+        `${Baseurl}api/user-infos/${usr}?populate[personalPhoto]=*`,
+        Auth
+      );
+      setUser(userRes.data.data);
       setResponse(res.data.data);
     } else {
       const res = await axios.get(
         `${Baseurl}api/aamdani-bhadayes/${id}?populate=*`,
         Auth
         );
+      const usr = res.data.data.attributes.user_info.data.id
+      const userRes = await axios.get(
+        `${Baseurl}api/user-infos/${usr}?populate[personalPhoto]=*`,
+        Auth
+      );
+      setUser(userRes.data.data);
       setResponse(res.data.data);
     }
   } catch {}
@@ -143,19 +180,31 @@ export const get_gardening = async (type, setResponse, setSingle) => {
   } catch {}
 };
 
-export const single_gardening = async (type, id, setResponse) => {
+export const single_gardening = async (type, id, setResponse, setUser) => {
   try {
     if (type === "hi") {
       const res = await axios.get(
         `${Baseurl}api/hindi-the-changemakers/${id}?populate=*`,
         Auth
       );
+      const usr = res.data.data.attributes.user_info.data.id
+      const userRes = await axios.get(
+        `${Baseurl}api/user-infos/${usr}?populate[personalPhoto]=*`,
+        Auth
+      );
+      setUser(userRes.data.data);
       setResponse(res.data.data);
     } else {
       const res = await axios.get(
         `${Baseurl}api/the-changemakers/${id}?populate=*`,
         Auth
       );
+      const usr = res.data.data.attributes.user_info.data.id
+      const userRes = await axios.get(
+        `${Baseurl}api/user-infos/${usr}?populate[personalPhoto]=*`,
+        Auth
+      );
+      setUser(userRes.data.data);
       setResponse(res.data.data);
     }
   } catch {}
@@ -229,13 +278,19 @@ export const getSingleStory = async (setResponse, id) => {
   } catch { }
 };
 
-export const get_single_category = async (type, setResponse, id) => {
+export const get_single_category = async (type, setResponse, id, setUser) => {
   try {
     if (type === "hi") {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}api/category-Hindis?populate=*`,
+        `${import.meta.env.VITE_BASE_URL}api/hindi-category-datas/${id}?populate=*`,
         Auth
       );
+      const usr = res.data.data.attributes.user_info.data.id
+      const userRes = await axios.get(
+        `${Baseurl}api/user-infos/${usr}?populate[personalPhoto]=*`,
+        Auth
+      );
+      setUser(userRes.data.data);
       setResponse(res.data.data);
     } else {
       const res = await axios.get(
@@ -243,7 +298,12 @@ export const get_single_category = async (type, setResponse, id) => {
         }api/categorydata/${id}?populate=*`,
         Auth
       );
-      console.log(res.data.data);
+      const usr = res.data.data.attributes.user_info.data.id
+      const userRes = await axios.get(
+        `${Baseurl}api/user-infos/${usr}?populate[personalPhoto]=*`,
+        Auth
+      );
+      setUser(userRes.data.data);
       setResponse(res.data.data);
     }
   } catch { }

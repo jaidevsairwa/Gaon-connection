@@ -68,6 +68,10 @@ export const routes = createBrowserRouter([
         element: <Daily />,
       },
       {
+        path: "/kisaan-connection/:id",
+        element: <Blogs />,
+      },
+      {
         path: "/aamdani-bhadaye",
         element: <Social />,
       },
@@ -90,10 +94,6 @@ export const routes = createBrowserRouter([
       {
         path: "/change-maker",
         element: <ChangeMaker />,
-      },
-      {
-        path: "/kisaan-connection/:id",
-        element: <Blogs />,
       },
       {
         path: "/the-changemakers/:id",

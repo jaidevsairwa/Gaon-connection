@@ -38,7 +38,7 @@ const LifeHack = () => {
     <>
       <ShortsCanvas show={modalShow2} setShow={setModalShow2} data={lifeHack} />
       <div className="life_container">
-        <h2>लाइफ़ हैक्स</h2>
+        <h2>गांव रील्स</h2>
         <div className="container_cardlist">
           <div className="strory--container">
             {lifeHack?.slice(0, 6)?.map((item) => (

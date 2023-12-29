@@ -27,8 +27,8 @@ const Contact = () => {
 			</div>
 			<div className="right">
 				<select value={selectedLanguage} onChange={handleLanguageChange}>
-					<option value="en">English</option>
 					<option value="hi">Hindi</option>
+					<option value="en">English</option>
 				</select>
 
 				<a href="https://www.facebook.com/GaonConnection" target="_blank">

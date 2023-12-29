@@ -16,9 +16,6 @@ const MobileHeader = () => {
   };
 
   const { selectedLanguage, setSelectedLanguage } = useLanguage();
-  if (selectedLanguage === "en") {
-    sessionStorage.setItem("selectedLanguage", "en");
-  }
 
   const handleLanguageChange = (e) => {
     setSelectedLanguage(e.target.value);
@@ -45,9 +42,9 @@ const MobileHeader = () => {
           </a>
         </div>
         <div className="logo_div">
-          <img src={logo} width={80} height={70} />
+          <img src={logo} width={80} height={50} />
           <span className="inner-logo">
-            सुनिए गाँव की आवाज़ बनिए गाँव की आवाज़
+            सुनिए गाँव की आवाज़ <br /> बनिए गाँव की आवाज़
           </span>
         </div>
 
@@ -58,7 +55,7 @@ const MobileHeader = () => {
       {isDrawerOpen && (
         <div className="drawer">
           <div className="close">
-            <img src={logo} width={70} height={70} />
+            <img src={logo} width={90} height={70} />
             <button className="close-button" onClick={toggleDrawer}>
               <img width={20} height={20} src={close}></img>
             </button>

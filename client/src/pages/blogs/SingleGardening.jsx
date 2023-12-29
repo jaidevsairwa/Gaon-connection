@@ -9,9 +9,10 @@ const SingleGardening = () => {
   const { id } = useParams();
   const { selectedLanguage } = useLanguage();
   const [data, setData] = useState({});
+  const [user, setUser] = useState([])
 
   useEffect(() => {
-    single_gardening(selectedLanguage, id, setData);
+    single_gardening(selectedLanguage, id, setData,setUser);
   }, [id, selectedLanguage]);
 
   const divStyle = {
@@ -40,8 +41,13 @@ const SingleGardening = () => {
         {" "}
         {data?.attributes?.Title}{" "}
       </h3>
-
+      <div className="desc">
       <ReactMarkdown>{data?.attributes?.Desc }</ReactMarkdown>
+      </div>
+      <div>
+        <img className="auth-img" src={`http://45.126.126.209:1337${user?.attributes?.personalPhoto?.data?.attributes?.url}`} alt="" />
+        <span>Author : {data?.attributes?.user_info?.data?.attributes?.username}</span>
+      </div>
     </div>
   );
 };

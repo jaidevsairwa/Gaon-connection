@@ -465,7 +465,7 @@ font-family: 'Alegreya', serif;
   display: flex;
   padding: 20px;
   align-items: center;
-  gap: 40px;
+  gap:10px;
 }
 
 @media screen and (max-width: 464px) {

@@ -55,13 +55,14 @@ const Header = () => {
       <span
         style={{
           display: "block",
-          fontSize: "20px",
+          fontSize: "16px",
           color: "black",
           textAlign: "center",
           width: "100%",
+          lineHeight:"1.2"
         }}
       >
-        सुनिए गाँव की आवाज़ बनिए गाँव की आवाज़
+        सुनिए गाँव की आवाज़ <br />  बनिए गाँव की आवाज़
       </span>
     </div>
   );

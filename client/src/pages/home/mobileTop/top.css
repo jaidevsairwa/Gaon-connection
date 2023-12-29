@@ -1,14 +1,8 @@
 .image-gallery {
     display: flex;
     justify-content: space-evenly;
-    /* justify-content: center; */
-    /* gap:20px; */
     color: #000;
-    /* padding-right: 30px;
-    padding-left: 30px; */
     margin: 40px 20px 10px;
-    /* padding-right: 30px; */
-    /* padding-left: 30px; */
   }
   
   .image-item {
@@ -48,13 +42,14 @@
   
   @media (max-width: 768px) {
     .image-gallery{
-      margin:20px 0;
+      margin:20px 0 10px;
     }
     .image-item img {
       width: auto;
-      height: 90px;
+      height: 100px;
     }
     .image-item p{
+      padding-top: 6px;
       font-size: 14px;
       font-weight: bold;
       margin: 0;
