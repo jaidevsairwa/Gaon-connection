@@ -102,12 +102,12 @@ export const getBlockAdd6 = async (setResponse) => {
     setResponse(response.data.data.attributes);
   } catch {}
 };
-// export const getStory = async (setResponse) => {
-//   try {
-//     const response = await axios.get(`${Baseurl}/api/stories?populate=*`, Auth);
-//     setResponse(response.data.data);
-//   } catch {}
-// };
+export const get_Story = async (setResponse) => {
+  try {
+    const response = await axios.get(`${Baseurl}/api/stories?populate=*`, Auth);
+    setResponse(response.data.data);
+  } catch {}
+};
 
 export const getStory = async (setResponse) => {
   try {

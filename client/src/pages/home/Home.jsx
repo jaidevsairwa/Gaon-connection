@@ -20,7 +20,7 @@ import {
   getBlockAdd5,
   getBlockAdd6,
   getPdfs,
-  getStory,
+  get_Story,
   get_all_category,
   get_image,
   get_videoName
@@ -73,7 +73,7 @@ const Home = () => {
     getBlockAdd4(setBlock4);
     getBlockAdd5(setBlock5);
     getBlockAdd6(setBlock6);
-    getStory(setStory);
+    get_Story(setStory);
     getPdfs(setPdfs);
     get_videoName(setTitle);
   }, {});

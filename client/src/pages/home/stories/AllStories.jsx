@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getStory, getStoryCategory } from "../../../Repo/Apis";
+import { get_Story, getStoryCategory } from "../../../Repo/Apis";
 import { useNavigate } from "react-router-dom";
 
 const AllStories = () => {
@@ -9,7 +9,7 @@ const AllStories = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getStory(setStory);
+    get_Story(setStory);
     getStoryCategory(setData);
   }, []);
 
