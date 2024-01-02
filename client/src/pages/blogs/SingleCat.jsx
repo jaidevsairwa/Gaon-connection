@@ -5,6 +5,8 @@ import { useLanguage } from "../../LanguageContext";
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from 'react-markdown'
 import { Tweet } from "react-tweet"
+import rehypeRaw from 'rehype-raw'
+import rehypeSanitize from 'rehype-sanitize'
 import "./blog.css";
 
 const SingleCat = () => {
@@ -28,6 +30,13 @@ const SingleCat = () => {
 
   useEffect(() => {
     get_single_category(selectedLanguage, setData, id, setUser);
+    const tww = () =>{
+      if (data?.attributes?.Desc){
+        document.querySelector("twitter-tweet").load("https://platform.twitter.com/widgets.js")
+      }
+      else{}
+    }
+    tww()
   }, [selectedLanguage, id]);
 
   return (
@@ -61,18 +70,17 @@ const SingleCat = () => {
           }`}
           alt=""
         />
-        { data?.attributes?.embed !== null && (
+        {/* { data?.attributes?.embed !== null && (
           <Tweet id={data?.attributes?.embed}></Tweet>
         )
-        }
+        } */}
       </div>
 
       <div className="category_content" style={{ textAlign: "justify" }}>
         {/* <div dangerouslySetInnerHTML={{ __html: data?.attributes?.Desc }} /> */}
-        <ReactMarkdown>{data?.attributes?.Desc}</ReactMarkdown>
+        <ReactMarkdown rehypePlugins={[rehypeRaw]} >{data?.attributes?.Desc}</ReactMarkdown>
       </div>
     </div>
   );
 };
-
 export default SingleCat;
