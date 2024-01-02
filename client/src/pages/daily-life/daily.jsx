@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "../articles/card";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../../LanguageContext";
-import { Daily_News_English, Daily_News_In_Hindi } from "../../Repo/Apis";
+// import { Daily_News_English, Daily_News_In_Hindi } from "../../Repo/Apis";
 import ReactMarkdown from 'react-markdown'
 
 const Daily = () => {
@@ -11,13 +11,13 @@ const Daily = () => {
 
   const { selectedLanguage } = useLanguage();
 
-  useEffect(() => {
-    if (selectedLanguage === "hi") {
-      Daily_News_In_Hindi(setdata);
-    } else {
-      Daily_News_English(setdata);
-    }
-  }, [selectedLanguage]);
+  // useEffect(() => {
+  //   if (selectedLanguage === "hi") {
+  //     Daily_News_In_Hindi(setdata);
+  //   } else {
+  //     Daily_News_English(setdata);
+  //   }
+  // }, [selectedLanguage]);
 
   return (
     <div className="article_div">
@@ -31,7 +31,7 @@ const Daily = () => {
             onClick={() => navigate(`/kisaan-connection/${i.id}`)}
           >
             <img
-              src={`http://45.126.126.209:1337${i?.attributes?.images?.data?.[0]?.attributes?.url}`}
+              src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.images?.data?.[0]?.attributes?.url}`}
               alt=""
             />
             <div className="article_content">

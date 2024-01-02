@@ -466,6 +466,14 @@ font-family: 'Alegreya', serif;
   padding: 20px;
   align-items: center;
   gap:10px;
+  justify-content: center;
+}
+.strory--container1 {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
 }
 
 @media screen and (max-width: 464px) {
@@ -473,6 +481,10 @@ font-family: 'Alegreya', serif;
     width: 100%;
     overflow: scroll;
   }
+        .strory--container1 {
+          width: 100%;
+          overflow: scroll;
+        }
   .story_container {
     /* display: absolute; */
     width: 120px;
@@ -571,7 +583,7 @@ font-family: 'Alegreya', serif;
 @media (max-width: 768px) {
   .Story-Modal .swiper {
     width: 100%;
-    height: 500px;
+    height: 100vh;
   }
   .Story-Modal {
     padding: 20px;

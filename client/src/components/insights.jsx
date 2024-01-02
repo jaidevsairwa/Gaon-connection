@@ -5,7 +5,9 @@ import './index.css';
 const Insights = (props) =>{
     return(
         <div className="insights">
-            <img src={`http://45.126.126.209:1337`+props.image}></img>
+            <a href={props.url}>
+            <img src={`${import.meta.env.VITE_BASE_URL}`+props.image}></img>
+        </a>
         </div>
     )
 }

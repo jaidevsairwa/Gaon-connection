@@ -5,12 +5,11 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import ShortsCanvas from "./ShortsCanvas";
-
+import { get_videoName } from "../../../Repo/Apis";
 
 const LifeHack = () => {
   const [lifeHack, setLifeHack] = useState([]);
-  const [modalShow2, setModalShow2] = useState(false);
+  const [video_title, setTitle] = useState({});
   const navigate = useNavigate();
 
   const Auth = {
@@ -22,7 +21,7 @@ const LifeHack = () => {
   const fetchHandler = async () => {
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}api/reel?populate=*`,
+        `${import.meta.env.VITE_BASE_URL}/api/reel?populate=*`,
         Auth
       );
       setLifeHack(data.data);
@@ -31,21 +30,20 @@ const LifeHack = () => {
 
   useEffect(() => {
     fetchHandler();
+    get_videoName(setTitle);
   }, []);
 
-  const base = "http://45.126.126.209:1337";
+  const base = import.meta.env.VITE_BASE_URL;
   return (
     <>
-      <ShortsCanvas show={modalShow2} setShow={setModalShow2} data={lifeHack} />
       <div className="life_container">
-        <h2>गांव रील्स</h2>
+        <h2>{video_title.story}</h2>
         <div className="container_cardlist">
           <div className="strory--container">
             {lifeHack?.slice(0, 6)?.map((item) => (
               <div
                 key={item.id}
-                // onClick={() => navigate(`/video-story/${item.id}`)}
-                onClick={() => setModalShow2(true)}
+                onClick={() => navigate(`/reels`)}
                 style={{ textAlign: "center" }}
                 className="outer-div"
               >
@@ -55,7 +53,6 @@ const LifeHack = () => {
                     backgroundImage: `url(${base}${item?.attributes?.images?.data?.[0]?.attributes?.url})`,
                   }}
                 ></div>
-               
               </div>
             ))}
           </div>

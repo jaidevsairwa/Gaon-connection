@@ -17,42 +17,36 @@ const SingleChallenge = () => {
     single_challenges(selectedLanguage, id, setData, setUser);
   }, [id, selectedLanguage]);
 
-  const divStyle = {
-    color:"black",
-    textAlign:"justify",
-    maxWidth: "1000px",
-    margin: "auto",
-    padding: "20px",
-    backgroundColor:"#f1f5fa",
-  };
 
   const imgStyle = {
     maxWidth: "100%",
     margin: "auto",
     width:"100%"
   };
-  const sty = {
-    height: "50px",
-    width: "50px",
-    borderRadius: "100px"
-  }
+  const date = new Date(data?.attributes?.publishedAt)
+  const forDate = date.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  })
 
   return (
-    <div style={divStyle}>
-      <img
-        src={`http://45.126.126.209:1337${data?.attributes?.Images?.data?.[0]?.attributes?.url}`}
-        alt=""
-        style={imgStyle}
-      />
+    <div className="divStyle">
       <h5 className="title" style={{ fontSize: "30px" }}>
         {" "}
         {data?.attributes?.Title}{" "}
       </h5>
-      <ReactMarkdown>{data?.attributes?.Desc}</ReactMarkdown>
-      <div>
-        <img className="auth-img" src={`http://45.126.126.209:1337${user?.attributes?.personalPhoto?.data?.attributes?.url}`} alt="" />
-        <span>Author : {data?.attributes?.user_info?.data?.attributes?.username}</span>
+      <div className="author" onClick={() => navigate(`../creator/${data?.attributes?.user_info?.data?.id}`)}>
+        <img className="auth-img" src={`${import.meta.env.VITE_BASE_URL}/${user?.attributes?.personalPhoto?.data?.attributes?.formats?.thumbnail?.url}`} alt="" />
+        <span className="author-name"> {data?.attributes?.user_info?.data?.attributes?.username}</span>
+        <span className="cre-date" >{forDate}</span>
       </div>
+      <img
+        src={`${import.meta.env.VITE_BASE_URL}/${data?.attributes?.Images?.data?.[0]?.attributes?.url}`}
+        alt=""
+        style={imgStyle}
+      />
+      <ReactMarkdown>{data?.attributes?.Desc}</ReactMarkdown>
     </div>
   );
 };

@@ -12,10 +12,10 @@ const surveyReport = () => {
                 "Bearer " + import.meta.env.VITE_TOKEN,
         }
     }
-    const base = "http://45.126.126.209:1337"
+    const base = `${import.meta.env.VITE_BASE_URL}`
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_BASE_URL}api/e-libraries?populate=*`, head)
+        axios.get(`${base}/api/e-libraries?populate=*`, head)
             .then(res => {
                 console.log(res.data.data[1].attributes.thumbnail.data[0].attributes.url);
                 setReport(res.data.data)

@@ -90,11 +90,11 @@ export const Gaon_Audio = () => {
         {audioData?.map((item, index) => (
           <div key={item.id} className='card-audio' >
 
-            {item.attributes.images.data !== null && (<img src={`http://45.126.126.209:1337${item.attributes.images.data.attributes.url}`} />)}
+            {item.attributes.images.data !== null && (<img src={`${import.meta.env.VITE_BASE_URL}/${item.attributes.images.data.attributes.url}`} />)}
 
             <h3>Raeyan</h3>
             <p>This is the audio page enjoy audio</p>
-            <AudioPlayer1 url={`http://45.126.126.209:1337${item.attributes.audio.data[0].attributes.url}`} id={item.id} />
+            <AudioPlayer1 url={`${import.meta.env.VITE_BASE_URL}/${item.attributes.audio.data[0].attributes.url}`} id={item.id} />
           </div>
         ))}
 

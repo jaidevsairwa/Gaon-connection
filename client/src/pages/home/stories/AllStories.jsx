@@ -13,7 +13,7 @@ const AllStories = () => {
     getStoryCategory(setData);
   }, []);
 
-  const base = "http://45.126.126.209:1337";
+  const base = `${import.meta.env.VITE_BASE_URL}`;
 
   const filterData = !query
     ? story

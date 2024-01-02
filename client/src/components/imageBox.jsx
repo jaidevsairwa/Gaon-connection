@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
+import ReactMarkdown from 'react-markdown'
 
 const ImageBox = (props) => {
   const navigate = useNavigate();
@@ -21,10 +22,10 @@ const ImageBox = (props) => {
             </div>
           )}
           <div className="text-container-box">
-            <div>
               {/* {props?.heading && <h1>{props?.heading}</h1>} */}
               {props?.title && <h2>{props?.title?.slice(0, 100)}...</h2>}
-              <p>{props?.desc?.slice(0, 100)}</p>
+              {/* { props?.desc &&  <ReactMarkdown>{props?.desc?.slice(0, 100)} </ReactMarkdown>} */}
+              <div dangerouslySetInnerHTML={{ __html: props?.desc?.slice(0, 100) }} />
               {props?.link && (
                 <button
                   onClick={() => navigate(props.link)}
@@ -34,7 +35,6 @@ const ImageBox = (props) => {
                 </button>
               )}
             </div>
-          </div>
         </div>
       </>
     </>

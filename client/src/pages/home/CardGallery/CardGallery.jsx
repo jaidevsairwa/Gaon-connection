@@ -80,7 +80,7 @@ const CardGallery = () => {
           // <Card key={index} {...card} />
           <div className="card" key={index}>
             <img
-              src={`http://45.126.126.209:1337${i?.attributes?.Main?.data?.attributes?.url}`}
+              src={`${import.meta.env.VITE_BASE_URL}/${i?.attributes?.Main?.data?.attributes?.url}`}
               alt="Card Image"
               className="card-image"
             />

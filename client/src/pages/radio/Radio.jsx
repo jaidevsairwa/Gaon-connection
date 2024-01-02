@@ -1,6 +1,7 @@
 import React from "react";
 import Audio from "../home/Audio/Audio";
-import audioFile from "../../assets/audio/HueBechain.mp3";
+// import audioFile from "../../assets/audio/HueBechain.mp3";
+const audioFile = 'https://mehramedia.in:9306/stream.mp3&autoplay=1'
 import "../home/Audio/audio.scss";
 import image from "../../assets/back.png";
 import { useNavigate } from "react-router-dom";

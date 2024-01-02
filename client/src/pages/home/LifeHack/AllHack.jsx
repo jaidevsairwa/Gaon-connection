@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getStory } from "../../../Repo/Apis";
+import { getStory  } from "../../../Repo/Apis";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AllHack = () => {
   const [story, setStory] = useState([]);
@@ -10,32 +11,41 @@ const AllHack = () => {
       Authorization: "Bearer " + import.meta.env.VITE_TOKEN,
     },
   };
+  const base = import.meta.env.VITE_BASE_URL;
   const fetchHandler = async () => {
-    try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}api/reel?populate=*`,
+    // try {
+    //   const data  = await axios.get(
+    //     `${base}/api/reel?populate=*`,
+    //     Auth
+    //   );
+    //   console.log(data);
+    //   setStory(data.data);
+    // } catch { console.log("error")}
+    const data = await axios.get(
+        `${base}/api/reel?populate=*`,
         Auth
       );
-      setStory(data.data);
-    } catch {}
+      setStory(data.data.data);
   };
 
   useEffect(() => {
-    fetchHandler();
+    // fetchHandler();
+    getStory(setStory)
   }, []);
 
-  const base = "http://45.126.126.209:1337";
-
+console.log(story);
   return (
     <div>
       <h1 className="imageBox_header">लाइफ़ हैक्स</h1>
       <div className="strory--container">
-        {story?.map((item) => (
+        {story?.length > 0 &&
+        story?.map((item) => (
           <div
             key={item.id}
             onClick={() => navigate(`/video-story/${item.id}`)}
             style={{ textAlign: "center" }}
           >
+            {console.log(item.id)}
             <div
               className="story_container"
               style={{

@@ -4,16 +4,8 @@ import AudioPlayer from "./player";
 
 import "./podcast.css";
 import { useNavigate } from "react-router-dom";
-import { useLanguage } from "../../LanguageContext";
-import { Daily_News_English, Daily_News_In_Hindi } from "../../Repo/Apis";
-import CarouselCard from "../../components/Carousel/CarouselCard";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import im from "../../assets/Images/banner.png";
-import pn from "../../assets/insights.png";
-import audioFile from "../../assets/audio/HueBechain.mp3";
-
-const slides = [{ url: im }, { url: pn }, { url: im }, { url: pn }];
 
 const containerStyles = {
   width: "100%",
@@ -25,21 +17,22 @@ const podcast = () => {
   const [podcast, setPodcast] = useState([]);
   const [banner, setBanner] = useState([]);
   const navigate = useNavigate();
+  const [aud, setAud] = useState('')
+  const [title, setTitle] = useState('')
 
   const head = {
     headers: {
       Authorization: "Bearer " + import.meta.env.VITE_TOKEN,
     },
   };
-  const base = "http://45.126.126.209:1337";
+  const base = import.meta.env.VITE_BASE_URL;
   //  const base = "http://localhost:1337"
 
   useEffect(() => {
     axios
       .get(
-        `${
-          import.meta.env.VITE_BASE_URL
-        }api/podcast-categories?populate[podcast_cates][populate]=*`,
+        `${import.meta.env.VITE_BASE_URL
+        }/api/podcast-categories?populate[podcast_cates][populate]=*`,
         head
       )
       .then((res) => {
@@ -47,7 +40,7 @@ const podcast = () => {
       });
     axios
       .get(
-        `${import.meta.env.VITE_BASE_URL}api/podcast-banners?populate=*`,
+        `${import.meta.env.VITE_BASE_URL}/api/podcast-banners?populate=*`,
         head
       )
       .then((res) => {
@@ -129,12 +122,12 @@ const podcast = () => {
                   {attributes?.podcast_cates?.data?.reverse()?.map((data) => (
                     <div id="div-2" key={data.id}>
                       <div className="box">
-                        {audioFile && (
-                          <AudioPlayer
-                            audioSrc={`${base}${data?.attributes?.Audio?.data?.attributes?.url}`}
-                            imgSrc={`${base}${data?.attributes?.image?.data?.attributes?.url}`}
-                          ></AudioPlayer>
-                        )}
+                        <img src={`${base}${data?.attributes?.image?.data?.attributes?.url}`}
+                          onClick={() => {
+                            setAud(`${base}${data?.attributes?.Audio?.data?.attributes?.url}`)
+                            setTitle(data?.attributes.Title)
+                          }}
+                          alt="" />
                       </div>
                       <span className="card-title">
                         {data?.attributes?.Name}
@@ -147,6 +140,13 @@ const podcast = () => {
           </div>
         );
       })}
+      {aud!=='' && (
+        <AudioPlayer className="audiop"
+          title={title}
+          audioSrc={aud}
+        ></AudioPlayer>
+      )}
+      
     </div>
   );
 };

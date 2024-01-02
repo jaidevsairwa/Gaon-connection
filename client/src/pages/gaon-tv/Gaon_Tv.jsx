@@ -39,7 +39,7 @@ export const Gaon_Tv = () => {
   const fetchHandler = async () => {
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}api/gaon-tvs?populate=*`,
+        `${import.meta.env.VITE_BASE_URL}/api/gaon-tvs?populate=*`,
         Auth
       );
       setData(data.data);
@@ -55,7 +55,7 @@ export const Gaon_Tv = () => {
           {data.map((i,index)=>(
             <a href={`${i?.attributes?.link}`}>
             <div className="card" id="gaotv"  key={index}>
-              <img src={`http://45.126.126.209:1337${i?.attributes?.images?.data?.[0]?.attributes?.url}`} alt="Card Image"
+              <img src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.images?.data?.[0]?.attributes?.url}`} alt="Card Image"
                 className="card-image" />
               <div className="card-content">
                 <h2 className="card-heading">{i?.attributes?.Title?.slice(0, 100)}...</h2>

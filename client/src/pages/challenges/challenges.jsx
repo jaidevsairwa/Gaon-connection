@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "../articles/card";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../../LanguageContext";
-import { get_challenges } from "../../Repo/Apis";
+// import { get_challenges } from "../../Repo/Apis";
 import ReactMarkdown from 'react-markdown' 
 
 const Daily = () => {
@@ -10,9 +10,9 @@ const Daily = () => {
   const navigate = useNavigate();
 const { selectedLanguage } = useLanguage();
 
- useEffect(() => {
-  get_challenges(selectedLanguage , setdata)
- },[selectedLanguage])
+//  useEffect(() => {
+//   get_challenges(selectedLanguage , setdata)
+//  },[selectedLanguage])
 
   return (
     <div className="article_div">
@@ -26,13 +26,13 @@ const { selectedLanguage } = useLanguage();
             onClick={() => navigate(`/teacher-connection/${i.id}`)}
           >
             <img
-              src={`http://45.126.126.209:1337${i?.attributes?.Images?.data?.[0]?.attributes?.url}`}
+              src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.Images?.data?.[0]?.attributes?.url}`}
               alt=""
             />
             <div className="article_content">
               <a className="heading-title">{i?.attributes?.Title} </a>
               <p className="heading-article">
-                <ReactMarkdown >{i?.attributes?.Desc?.slice(0, 300)}</ReactMarkdown>
+                <ReactMarkdown >{i?.attributes?.Desc?.slice(0, 185)}</ReactMarkdown>
               </p>
             </div>
           </div>

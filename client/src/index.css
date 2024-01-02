@@ -2,8 +2,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #FFF;
-  
+  background-color: #fff;
 }
 
 :root {
@@ -18,8 +17,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  font-family: 'Poppins';
-
+  font-family: "Poppins";
 }
 
 a {
@@ -78,3 +76,20 @@ button:focus-visible {
   }
 }
 
+@font-face {
+  font-family: "CustomHindi";
+  src: url("./Fonts/DevLys\ 010\ Bold.ttf");
+}
+
+.HindiFOnts p,
+.HindiFOnts h1,
+.HindiFOnts h2,
+.HindiFOnts h4,
+.HindiFOnts h5,
+.HindiFOnts h3,
+.HindiFOnts h6,
+.HindiFOnts span,
+.HindiFOnts a {
+  font-family: CustomHindi !important ;
+  
+}

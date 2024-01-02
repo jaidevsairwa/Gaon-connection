@@ -13,7 +13,7 @@ const VideoStory = () => {
   }, []);
 
   const images = data?.attributes?.video?.data?.map((i) => ({
-    url: `http://45.126.126.209:1337${i?.attributes?.url}`,
+    url: `${import.meta.env.VITE_BASE_URL}${i?.attributes?.url}`,
     type: "video",
   }));
 

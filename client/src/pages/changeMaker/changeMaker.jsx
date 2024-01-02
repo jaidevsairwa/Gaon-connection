@@ -8,18 +8,18 @@ import img1 from "../../assets/img1.jpg";
 const ChangeMaker = () => {
   const [data, setData] = useState([]);
   const [singledata, setSingledata] = useState({});
-
+  const base = import.meta.env.VITE_BASE_URL
   const Auth = {
     headers: {
       Authorization:
-        "Bearer e2fb59354010ffcd981795bf4c8da3508bb642866b3ff075560bb46572e400a44fec02a8f50fbac78912d9ba3bbf33280ce27307d71640914cdfd3c47bc0df967963caeed5e04ae64b3adfc47d06f8b1da50563def8ec6bcff9e356a57d98abf53eb83cd5cb50e85c0d1c7c6f74ae37efab00001df93ef8f5ffc4c0071a42ef7",
+        `Bearer ${import.meta.env.VITE_TOKEN}` ,
     },
   };
 
   const fetchHandler = async () => {
     try {
       const { data } = await axios.get(
-        "http://45.126.126.209:1337/api/change-makers?populate=*",
+        `${base}/api/change-makers?populate=*`,
         Auth
       );
       setData(data.data);
@@ -31,14 +31,6 @@ const ChangeMaker = () => {
     fetchHandler();
   }, []);
 
-  const divContainer = {
-    display: "flex",
-    justifyContent: "space-evenly",
-    gap: "20px",
-    alignItem: "center",
-    flexWrap: "wrap",
-    padding: "10px",
-  };
 
   const imgContainer = {
     width: "300px",
@@ -47,10 +39,9 @@ const ChangeMaker = () => {
 
   return (
     <div>
-      <div style={divContainer}>
+      <div className="div-container">
         <img src={img} alt="" style={imgContainer} />
         <img src={img1} alt="" style={imgContainer} />
-      </div>
       <p style={{ textAlign: "center", fontSize: "20px" }}>
         This unique long term project aims to build a one-of-its-kind National
         Registry of Changemakers in the country. From social workers, teachers,
@@ -62,10 +53,11 @@ const ChangeMaker = () => {
         whose life mission is to help others. And they often work under extreme
         circumstances with bare minimum resources — financial or material.
       </p>
+      </div>
       <div className="change-maker">
         <div>
           <img
-            src={`http://45.126.126.209:1337${singledata?.attributes?.Images?.data?.[0]?.attributes?.url}`}
+            src={`${import.meta.env.VITE_BASE_URL}${singledata?.attributes?.Images?.data?.[0]?.attributes?.url}`}
             alt=""
           />
         </div>
@@ -81,7 +73,7 @@ const ChangeMaker = () => {
               style={{ fontFamily: "Poppins" }}
             >
               <img
-                src={`http://45.126.126.209:1337${i?.attributes?.Images?.data?.[0]?.attributes?.url}`}
+                src={`${import.meta.env.VITE_BASE_URL}/${i?.attributes?.Images?.data?.[0]?.attributes?.url}`}
                 alt=""
               />
               <div className="article_content">

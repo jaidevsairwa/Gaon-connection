@@ -4,18 +4,13 @@ import HomeImage from "../../components/homeImage";
 import ImageBox from "../../components/imageBox";
 import LifeHack from "./LifeHack/LifeHack";
 import CardImage from "./CardImage/CardImage";
-import CardGallery from "./CardGallery/CardGallery";
 import TopImages from "./mobileTop/top";
-import audioFile from "../../assets/audio/HueBechain.mp3";
 import Insights from "../../components/insights";
 import Audio from "./Audio/Audio";
-import { fetchJSON } from "../../api";
 import "react-multi-carousel/lib/styles.css";
+import '../../components/card/card.scss'
 import axios from "axios";
-import { Tweet } from "react-tweet";
 import {
-  Daily_News_English,
-  Daily_News_In_Hindi,
   getAdd1,
   getAdd2,
   getBlockAdd1,
@@ -27,27 +22,17 @@ import {
   getPdfs,
   getStory,
   get_all_category,
-  get_challenges,
-  get_gardening,
-  get_social,
+  get_image,
+  get_videoName
 } from "../../Repo/Apis";
 import { useLanguage } from "../../LanguageContext";
-import CarouselCard from "../../components/Carousel/CarouselCard";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useNavigate } from "react-router-dom";
-import Video from "./video/video";
-import { StoryCanvas } from "../../components/Canvas/StoryCanvas";
+
+const audioFile = "https://mehramedia.in:9306/stream.mp3&autoplay=1";
 
 const Home = () => {
-  const [socialLife, setSocialLife] = useState([]);
-  const [sinleSocila, setSingleSocial] = useState({});
-  const [gardening, setGardening] = useState([]);
-  const [singleGarden, setSingleGarden] = useState("");
-  const [singleDaily, setSingleDaily] = useState({});
-  const [challenges, setChallenges] = useState([]);
-  const [singleChallenges, setSingleChallenges] = useState({});
-  const [daily, setDaily] = useState([]);
   const [banner1, setBanner1] = useState({});
   const [banner2, setBanner2] = useState({});
   const [block1, setBlock1] = useState({});
@@ -61,33 +46,23 @@ const Home = () => {
   const { selectedLanguage } = useLanguage();
   const [pdfs, setPdfs] = useState([]);
   const navigate = useNavigate();
-  const [id, setid] = useState("");
+  const [sortedData, setSortedData] = useState([]);
+  const [gaon_image, setGaonImage] = useState({});
+  const [radio_image, setRadioImage] = useState({});
+  const [pod_image, setPodImage] = useState({});
+  const [video_title,setTitle] = useState({});
 
-  // useEffect(() => {
-  //   fetchJSON("adds?populate=*", "GET", "").then((data) => {
-  //     setAds1(data.data);
-  //   });
-
-  //   fetchJSON("social-lives?populate=*", "GET", "").then((data) => {
-  //     setSocialLife(data.data);
-  //   });
-  // }, []);
-
-  const fetchDaily = () => {
-    if (selectedLanguage === "hi") {
-      Daily_News_In_Hindi(setDaily, setSingleDaily);
-    } else {
-      Daily_News_English(setDaily, setSingleDaily);
-    }
-  };
+  window.scrollTo(0, 0);
 
   useEffect(() => {
-    fetchDaily();
-    get_challenges(selectedLanguage, setChallenges, setSingleChallenges);
-    get_social(selectedLanguage, setSocialLife, setSingleSocial);
-    get_gardening(selectedLanguage, setGardening, setSingleGarden);
     get_all_category(selectedLanguage, setCategory);
   }, [selectedLanguage]);
+
+  useEffect(() => {
+    get_image("gaon", setGaonImage);
+    get_image("radio", setRadioImage);
+    get_image("pod", setPodImage);
+  }, []);
 
   useEffect(() => {
     getAdd1(setBanner1);
@@ -100,6 +75,7 @@ const Home = () => {
     getBlockAdd6(setBlock6);
     getStory(setStory);
     getPdfs(setPdfs);
+    get_videoName(setTitle);
   }, {});
 
   const responsive = {
@@ -122,13 +98,7 @@ const Home = () => {
     },
   };
 
-  const dialyText =
-    selectedLanguage === "hi" ? "किसान कनेक्शन" : "Kisaan Connection";
-
-  const teacherText =
-    selectedLanguage === "hi" ? "टीचर कनेक्शन " : "Teacher Connection";
-
-  const base = "http://45.126.126.209:1337";
+  const base = `${import.meta.env.VITE_BASE_URL}`;
 
   const downloadPDF = (name, data) => {
     axios
@@ -152,340 +122,319 @@ const Home = () => {
       });
   };
 
-  const [modalShow, setModalShow] = useState(false);
-
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (Array.isArray(category) && category) {
+      const date_sorted = category
+        .slice()
+        .sort(
+          (a, b) => (a?.attributes?.order || 0) - (b?.attributes?.order || 0)
+        );
+
+      setSortedData(date_sorted);
+    }
+  }, [category]);
+
   return (
-    <div>
-      <StoryCanvas
-        show={modalShow}
-        setShow={() => setModalShow(false)}
-        id={id}
-      />
+    <div className={selectedLanguage === "hi" && "HindiFOnts"}>
       <Audio audioFile={audioFile} />
-      <TopImages />
+      <TopImages
+        gaonImage={gaon_image?.image?.data?.attributes?.url}
+        radioImage={radio_image?.image?.data?.attributes?.url}
+        podImage={pod_image?.image?.data?.attributes?.url}
+      />
       <HomeImage />
       <Insights image={banner1?.image?.data?.attributes?.url} />
-
-      <ImageBox
-        main_heading={dialyText}
-        title={singleDaily?.attributes?.Title}
-        desc={singleDaily?.attributes?.Desc?.slice(0, 200)}
-        image={`${base}${singleDaily?.attributes?.images?.data?.[0]?.attributes?.url}`}
-        link={`/kisaan-connection/${singleDaily?.id}`}
-      />
-
-      <CarouselCard
-        data={daily}
-        link={"/kisaan-connection"}
-        indiLink={"/kisaan-connection"}
-      />
-      {/* ------- */}
-      <CardImage ad1={block1} ad2={block2} />
-      <ImageBox
-        main_heading="The Changemakers"
-        heading={singleGarden?.attributes?.Title}
-        title={singleGarden?.attributes?.Title}
-        desc={singleGarden?.attributes?.Desc}
-        image={`${base}${singleGarden?.attributes?.images?.data?.[0]?.attributes?.url}`}
-        link={`/the-changemakers/${singleGarden.id}`}
-      />
-      <div className="container_cardlist">
-        <Carousel
-          draggable={true}
-          customTransition="all .5"
-          transitionDuration={500}
-          fade={true}
-          arrows={true}
-          responsive={responsive}
-          autoplay={true}
-          autoplaySpeed={500}
-        >
-          {gardening?.slice(1)?.map((i, index) => (
-            <div className="card" key={index}>
-              <img
-                src={`${base}${i?.attributes?.images?.data?.[0]?.attributes?.url}`}
-                alt="Card Image"
-                className="card-image"
-              />
-              <div className="card-content">
-                <h2 className="card-heading">{i?.attributes?.Title}</h2>
-                <p className="card-description">
-                  <span
-                    style={{ color: "#0CC5FF" }}
-                    onClick={() => navigate(`/the-changemakers/${i.id}`)}
-                  >
-                    {" "}
-                    Read More
-                  </span>
-                </p>
-              </div>
-            </div>
-          ))}
-        </Carousel>
-
-        <button className="btn" onClick={() => navigate(`/the-changemakers`)}>
-          View All
-        </button>
-      </div>
-      <div className="container_cardlist">
-        <h1 className="imageBox_header">Web-Stories</h1>
-        <div className="strory--container">
-          {story?.slice(0, 6)?.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => {
-                setid(item.id);
-                setModalShow(true);
-              }}
-              className="outer-div"
-              style={{ textAlign: "center" }}
-            >
-              <div
-                className="story_container"
-                style={{
-                  backgroundImage: `url(${base}${item?.attributes?.images?.data?.[0]?.attributes?.url})`,
-                }}
-              ></div>
-            </div>
-          ))}
-        </div>
-        <button className="btn" onClick={() => navigate(`/all-stories`)}>
-          View All
-        </button>
-      </div>
-      {/* Challanges */}
-      {singleChallenges && (
-        <ImageBox
-          main_heading={teacherText}
-          title={singleChallenges?.attributes?.Title}
-          desc={singleChallenges?.attributes?.Desc?.slice(0, 200)}
-          image={`${base}${singleChallenges?.attributes?.Images?.data?.[0]?.attributes?.url}`}
-          link={`/teacher-connection/${singleChallenges?.id}`}
-        />
-      )}
-      {challenges?.length > 0 && (
-        <div className="container_cardlist">
-          <Carousel
-            draggable={true}
-            customTransition="all .5"
-            transitionDuration={500}
-            fade={true}
-            arrows={true}
-            responsive={responsive}
-            autoplay={true}
-            autoplaySpeed={500}
-          >
-            {challenges?.slice(1)?.map((i, index) => (
-              <div className="card" key={index}>
-                <img
-                  src={`${base}${i?.attributes?.Images?.data?.[0]?.attributes?.url}`}
-                  alt="Card Image"
-                  className="card-image"
-                />
-                <div className="card-content">
-                  <h2 className="card-heading">{i?.attributes?.Title}</h2>
-                  <p className="card-description">
-                    <span
-                      style={{ color: "#0CC5FF" }}
-                      onClick={() => navigate(`/teacher-connection/${i.id}`)}
-                    >
-                      {" "}
-                      Read More
-                    </span>
-                  </p>
-                </div>
-              </div>
-            ))}
-          </Carousel>
-
-          <button
-            className="btn"
-            onClick={() => navigate(`/teacher-connection`)}
-          >
-            View All
-          </button>
-        </div>
-      )}
-      <CardImage ad1={block3} ad2={block4} />
-      <LifeHack />
-      <Insights image={banner2?.image?.data?.attributes?.url} />
-      {/* Social Life */}
-      {sinleSocila && (
-        <ImageBox
-          main_heading="Aamdani Bhadaye"
-          heading="सामाजिक जीवन"
-          title={sinleSocila?.Title}
-          desc={sinleSocila?.Desc}
-          image={`${base}${sinleSocila?.images?.data?.[0]?.attributes?.url}`}
-        />
-      )}
-      {socialLife?.length > 0 && (
-        <CarouselCard
-          data={socialLife}
-          link={"/aamdani-bhadaye"}
-          indiLink={"/aamdani-bhadaye-item"}
-        />
-      )}
-      <CardImage ad1={block5} ad2={block6} />
-      {/* <CardGallery /> */}
-      <ImageBox main_heading={"Survey and Reports"} />
-      {pdfs?.length > 0 && (
-        <div className="container_cardlist">
-          <Carousel
-            draggable={true}
-            customTransition="all .5"
-            transitionDuration={500}
-            fade={true}
-            arrows={true}
-            responsive={responsive}
-            autoplay={true}
-            autoplaySpeed={500}
-          >
-            {pdfs?.map((i, index) => (
-              <div className="card" style={{ boxShadow: "none" }} key={index}>
-                <img
-                  src={`${base}${i?.attributes?.thumbnail?.data?.[0]?.attributes?.url}`}
-                  onClick={() =>
-                    downloadPDF(
-                      i?.attributes?.Docs?.data?.[0]?.attributes?.name,
-                      i?.attributes?.Docs?.data?.[0]?.attributes?.url
-                    )
-                  }
-                  alt=""
-                  className="card-image"
-                />
-              </div>
-            ))}
-          </Carousel>
-
-          <button className="btn" onClick={() => navigate(`/survey-report`)}>
-            View All
-          </button>
-        </div>
-      )}
       {/* Category */}
       {category?.length > 0 &&
-        category?.map((i, index) => (
+        sortedData?.map((i, index) => (
           <>
+            {index == 1 && <CardImage ad1={block1} ad2={block2} />}
+            {index == 2 && (
+              <div className="container_cardlist">
+                <h1 className="imageBox_header">{video_title.story}</h1>
+
+                <div className="strory--container1">
+                  {story?.slice(0, 6)?.map((item) => (
+                    <div
+                      key={item.id}
+                      onClick={() => {
+                        navigate(`/web-stories/${item.id}`);
+                      }}
+                      className="outer-div"
+                      style={{ textAlign: "center" }}
+                    >
+                      <div
+                        className="story_container"
+                        style={{
+                          backgroundImage: `url(${base}${item?.attributes?.images?.data?.[0]?.attributes?.url})`,
+                        }}
+                      ></div>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  className="btn"
+                  style={{
+                    margin: "20px auto",
+                    borderRadius: "10px",
+                    padding: "10px 15px",
+                    backgroundColor: "#ff2800",
+                    color: "white"
+                  }}
+                  onClick={() => navigate(`/all-stories`)}
+                >
+                  View All
+                </button>
+              </div>
+            )}
+            {index == 3 && (
+              <>
+                <CardImage ad1={block3} ad2={block4} />
+                <LifeHack />
+                <Insights image={banner2?.image?.data?.attributes?.url} />
+              </>
+            )}
+            {index == 4 && <CardImage ad1={block5} ad2={block6} />}
+            {index == 5 && (
+              <>
+                <ImageBox main_heading={"Survey and Reports"} />
+                {pdfs?.length > 0 && (
+                  <div className="container_cardlist">
+                    <Carousel
+                      draggable={true}
+                      customTransition="all .5"
+                      transitionDuration={500}
+                      fade={true}
+                      arrows={true}
+                      responsive={responsive}
+                      autoplay={true}
+                      autoplaySpeed={500}
+                    >
+                      {pdfs?.map((i, index) => (
+                        <div
+                          className="card"
+                          style={{ boxShadow: "none" }}
+                          key={index}
+                        >
+                          <img
+                            src={`${base}${i?.attributes?.thumbnail?.data?.[0]?.attributes?.url}`}
+                            onClick={() =>
+                              downloadPDF(
+                                i?.attributes?.Docs?.data?.[0]?.attributes
+                                  ?.name,
+                                i?.attributes?.Docs?.data?.[0]?.attributes?.url
+                              )
+                            }
+                            alt=""
+                            className="card-image"
+                          />
+                        </div>
+                      ))}
+                    </Carousel>
+
+                    <button
+                      className="btn"
+                      style={{
+                        margin: "20px auto",
+                        borderRadius: "10px",
+                        padding: "10px 15px",
+                        backgroundColor: "#ff2800",
+                        color: "white"
+                      }}
+                      onClick={() => navigate(`/survey-report`)}
+                    >
+                      View All
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
+
             {selectedLanguage === "hi" ? (
               <ImageBox
                 main_heading={i?.attributes?.name}
                 title={
                   i?.attributes?.category_data_hindis?.data?.[0]?.attributes
-                    ?.Name
+                    ?.Title
                 }
-                desc={i?.attributes?.category_data_hindis?.data?.[0]?.attributes?.desc.slice(
+                desc={i?.attributes?.category_data_hindis?.data?.[0]?.attributes?.Desc.slice(
                   0,
                   200
                 )}
                 image={`${base}${i?.attributes?.category_data_hindis?.data?.[0]?.attributes?.images?.data?.[0]?.attributes?.url}`}
                 link={`/indi-category/${i?.attributes?.category_data_hindis?.data?.[0]?.id}`}
+                id={i?.attributes?.name}
               />
             ) : (
               <ImageBox
                 main_heading={i?.attributes?.name}
                 title={
-                  i?.attributes?.category_data?.data?.[0]?.attributes?.Name
+                  i?.attributes?.category_data?.data?.[0]?.attributes?.Title
                 }
-                desc={i?.attributes?.category_data?.data?.[0]?.attributes?.desc.slice(
-                  0,
-                  200
-                )}
+                desc={i?.attributes?.category_data?.data?.[0]?.attributes?.Desc.slice(0,200)}
                 image={`${base}${i?.attributes?.category_data?.data?.[0]?.attributes?.images?.data?.[0]?.attributes?.url}`}
                 link={`/indi-category/${i?.attributes?.category_data?.data?.[0]?.id}`}
               />
             )}
 
             <div className="container_cardlist" key={index}>
-              {selectedLanguage === "hi" ? (
-                <Carousel
-                  draggable={true}
-                  customTransition="all .5"
-                  transitionDuration={500}
-                  fade={true}
-                  arrows={true}
-                  responsive={responsive}
-                  autoplay={true}
-                  autoplaySpeed={500}
-                >
-                  {i?.attributes?.category_data_hindis?.data?.slice(1).map(
-                    (item, index) => (
-                      <div
-                        className="card"
-                        key={index}
-                        onClick={() => navigate(`/indi-category/${item?.id}`)}
-                      >
-                        <img
-                          src={`${base}${item?.attributes?.images?.data?.[0]?.attributes?.url}`}
-                          alt=""
-                          className="card-image"
-                        />
-                        <div className="card-content">
-                          <h2 className="card-heading">
-                            {item?.attributes?.Name}
-                          </h2>
-                          <span
-                            style={{ color: "#0CC5FF" }}
+              {selectedLanguage === "hi"
+                ?
+                 i?.attributes?.category_data_hindis?.data.length > 0 && (
+                    <Carousel
+                      draggable={true}
+                      customTransition="all .5"
+                      transitionDuration={500}
+                      fade={true}
+                      arrows={true}
+                      responsive={responsive}
+                      autoplay={true}
+                      autoplaySpeed={500}
+                    >
+                      {/* {i?.attributes?.category_data_hindis?.data >0 && (
+                          <div
+                            className="card"
+                            key={index}
                             onClick={() =>
                               navigate(`/indi-category/${item?.id}`)
                             }
                           >
-                            {" "}
-                            Read More
-                          </span>
-                        </div>
-                      </div>
-                    )
-                  )}
-                </Carousel>
-              ) : (
-                <Carousel
-                  draggable={true}
-                  customTransition="all .5"
-                  transitionDuration={500}
-                  fade={true}
-                  arrows={true}
-                  responsive={responsive}
-                  autoplay={true}
-                  autoplaySpeed={500}
-                >
-                  {i?.attributes?.category_data?.data?.slice(1).map((item) => (
-                    <div
-                      className="card"
-                      key={index}
-                      onClick={() => navigate(`/indi-category/${item?.id}`)}
-                    >
-                      <img
-                        src={`${base}${item?.attributes?.images?.data?.[0]?.attributes?.url}`}
-                        alt=""
-                        className="card-image"
-                      />
-                      <div className="card-content">
-                        <h2 className="card-heading">
-                          {item?.attributes?.Name}
-                        </h2>
-                        <span
-                          style={{ color: "#0CC5FF" }}
-                          onClick={() => navigate(`/indi-category/${item?.id}`)}
+                            <img
+                              src={`${base}${item?.attributes?.images?.data?.[0]?.attributes?.url}`}
+                              alt=""
+                              className="card-image"
+                            />
+                            <div className="card-content">
+                              <h2 className="card-heading">
+                                {item?.attributes?.Title}
+                              </h2>
+                              <span
+                                style={{ color: "#0CC5FF" }}
+                                onClick={() =>
+                                  navigate(`/indi-category/${item?.id}`)
+                                }
+                              >
+                                {" "}
+                                Read More
+                              </span>
+                            </div>
+                          </div>
+                        )} */}
+                    {i?.attributes?.category_data_hindis?.data
+                      ?.slice(1)
+                      .map((item) => (
+                        <div
+                          className="card"
+                          key={index}
+                          onClick={() =>
+                            navigate(`/indi-category/${item?.id}`)
+                          }
                         >
-                          {" "}
-                          Read More
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </Carousel>
+                          <img
+                            src={`${base}${item?.attributes?.images?.data?.[0]?.attributes?.url}`}
+                            alt=""
+                            className="card-image"
+                          />
+                          <div className="card-content">
+                            <h2 className="card-heading">
+                              {item?.attributes?.Title}
+                            </h2>
+                            <span
+                              style={{ color: "#0CC5FF" }}
+                              onClick={() =>
+                                navigate(`/indi-category/${item?.id}`)
+                              }
+                            >
+                              {" "}
+                              Read More
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </Carousel>
+                    
+                  )
+                :  (
+                  <>
+                    {i?.attributes?.category_data?.data.length > 0 && (
+                    <Carousel
+                      draggable={true}
+                      customTransition="all .5"
+                      transitionDuration={500}
+                      fade={true}
+                      arrows={true}
+                      responsive={responsive}
+                      autoplay={true}
+                      autoplaySpeed={500}
+                    >
+                      {i?.attributes?.category_data?.data
+                        ?.slice(1)
+                        .map((item) => (
+                          <div
+                            className="card"
+                            key={index}
+                            onClick={() =>
+                              navigate(`/indi-category/${item?.id}`)
+                            }
+                          >
+                            <img
+                              src={`${base}${item?.attributes?.images?.data?.[0]?.attributes?.url}`}
+                              alt=""
+                              className="card-image"
+                            />
+                            <div className="card-content">
+                              <h2 className="card-heading">
+                                {item?.attributes?.Title}
+                              </h2>
+                              <span
+                                style={{ color: "#0CC5FF" }}
+                                onClick={() =>
+                                  navigate(`/indi-category/${item?.id}`)
+                                }
+                              >
+                                {" "}
+                                Read More
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                    </Carousel>
+)}
+                  </>
+                  )}
+              {index == 1 && (
+                <>
+                  <button
+                    className="btn"
+                    style={{
+                      margin: "20px auto",
+                      borderRadius: "10px",
+                      padding: "10px 15px",
+                      backgroundColor: "#ff2800",
+                      color: "white"
+                    }}
+                    onClick={() => navigate(`/the-changemakers`)}
+                  >
+                    View All
+                  </button>
+                </>
+              )}
+              {index !== 1 && (
+                <button
+                  className="btn"
+                  style={{
+                    margin: "20px auto",
+                    borderRadius: "10px",
+                    padding: "10px 15px",
+                    backgroundColor: "#ff2800",
+                    color: "white"
+                  }}
+                  onClick={() => navigate(`/category/${i?.id}`)}
+                >
+                  View All
+                </button>
               )}
 
-              <button
-                className="btn"
-                onClick={() => navigate(`/category/${i?.id}`)}
-              >
-                View All
-              </button>
             </div>
           </>
         ))}

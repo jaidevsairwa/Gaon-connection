@@ -4,6 +4,7 @@ import { get_category } from "../../Repo/Apis";
 import { useLanguage } from "../../LanguageContext";
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import '../articles/maker.css'
 
 const Category = () => {
   const { id } = useParams();
@@ -30,16 +31,17 @@ const Category = () => {
               onClick={() => navigate(`/indi-category/${i.id}`)}
             >
               <img
-                src={`http://45.126.126.209:1337${i?.attributes?.images?.data[0].attributes?.url}`}
+                src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.images?.data[0].attributes?.url}`}
                 alt=""
               />
               <div className="article_content">
-                <a className="heading-title">{i?.attributes?.Name} </a>
-                <p className="heading-article">
-                  <ReactMarkdown>
-                    {i?.attributes?.desc?.slice(0, 300)}
-                  </ReactMarkdown>
-                </p>
+                <a className="heading-title">{i?.attributes?.Title} </a>
+                {/* <p className="heading-article"> */}
+                  {/* <ReactMarkdown>
+                    {i?.attributes?.Desc?.slice(0, 200)}
+                  </ReactMarkdown> */}
+                {/* </p> */}
+                <div dangerouslySetInnerHTML={{ __html: i?.attributes?.Desc?.slice(0, 200) }} />
               </div>
             </div>
           ))}
@@ -54,16 +56,16 @@ const Category = () => {
           onClick={() => navigate(`/indi-category/${i.id}`)}
         >
           <img
-            src={`http://45.126.126.209:1337${i?.attributes?.images?.data[0].attributes?.url}`}
+            src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.images?.data[0].attributes?.url}`}
             alt=""
           />
           <div className="article_content">
-            <a className="heading-title">{i?.attributes?.Name} </a>
-            <p className="heading-article">
-              <ReactMarkdown>
-                {i?.attributes?.desc?.slice(0, 300)}
-              </ReactMarkdown>
-            </p>
+            <a className="heading-title">{i?.attributes?.Title} </a>
+                <div className="category_content" style={{ textAlign: "justify" }}>
+                  {/* <div dangerouslySetInnerHTML={{ __html: i?.attributes?.Desc?.slice(0, 300) }} /> */}
+                  {/* <ReactMarkdown> {i?.attributes?.Desc?.slice(0, 300)}  </ReactMarkdown> */}
+                  <div dangerouslySetInnerHTML={{ __html: i?.attributes?.Desc?.slice(0, 300) }} />
+                </div>
           </div>
         </div>
         ))}

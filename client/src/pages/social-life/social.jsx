@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "../articles/card";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../../LanguageContext";
-import { get_social } from "../../Repo/Apis";
+// import { get_social } from "../../Repo/Apis";
 import ReactMarkdown from 'react-markdown'
 
 const Social = () => {
@@ -10,9 +10,9 @@ const Social = () => {
   const navigate = useNavigate();
   const { selectedLanguage } = useLanguage();
 
-  useEffect(() => {
-    get_social(selectedLanguage, setdata);
-  }, [selectedLanguage]);
+  // useEffect(() => {
+  //   get_social(selectedLanguage, setdata);
+  // }, [selectedLanguage]);
 
   return (
     <div className="article_div" >
@@ -26,7 +26,7 @@ const Social = () => {
             onClick={() => navigate(`/aamdani-bhadaye-item/${i.id}`)}
           >
             <img
-              src={`http://45.126.126.209:1337${i?.attributes?.images?.data?.[0]?.attributes?.url}`}
+              src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.images?.data?.[0]?.attributes?.url}`}
               alt=""
             />
             <div className="article_content">

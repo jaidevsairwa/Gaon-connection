@@ -1,33 +1,25 @@
 import React, { useState, useRef, useEffect } from "react";
 import "material-symbols";
 
-function AudioPlayer({ audioSrc, imgSrc }) {
+function AudioPlayer({ audioSrc, title }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const audioRef = useRef("empty");
-
-  const handlePlay = () => {
-    audioRef?.current.play();
-    setIsPlaying(true);
-  };
-
-  const handlePause = () => {
-    audioRef?.current.pause();
-    setIsPlaying(false);
-  };
+  const audioRef = useRef(new Audio());
 
   const handlePlayPause = () => {
     if (isPlaying) {
-      handlePause();
+      audioRef.current.pause();
     } else {
-      handlePlay();
+      audioRef.current.play().catch((error) => {
+        console.error("Error playing audio:", error);
+      });
     }
+    setIsPlaying(!isPlaying);
   };
 
   const handleTimeUpdate = () => {
-    setCurrentTime(audioRef?.current.currentTime);
-    setDuration(audioRef?.current.duration);
+    setCurrentTime(audioRef.current.currentTime);
   };
 
   const handleSeek = (e) => {
@@ -43,30 +35,40 @@ function AudioPlayer({ audioSrc, imgSrc }) {
   }
 
   useEffect(() => {
-    if (audioRef) {
-      audioRef?.current?.addEventListener("timeupdate", handleTimeUpdate);
-      return () => {
-        if (audioRef) {
-          audioRef?.current?.removeEventListener("timeupdate", handleTimeUpdate);
-        }
-      };
+    const audio = audioRef.current;
+
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+    audio.addEventListener("loadedmetadata", () => setDuration(audio.duration));
+
+    return () => {
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
+      audio.removeEventListener("loadedmetadata", () => setDuration(audio.duration));
+    };
+  }, [audioRef, handleTimeUpdate]);
+
+  useEffect(() => {
+    // Update audio source when audioSrc prop changes
+    if (audioSrc !== audioRef.current.src) {
+      audioRef.current.src = audioSrc;
+      audioRef.current.play().catch((error) => {
+        console.error("Error playing audio:", error);
+      });
+      setIsPlaying(true);
     }
-  }, [audioRef]);
+  }, [audioSrc]);
 
   return (
     <div className="player-card">
       <div onClick={handlePlayPause}>
-        <img className="audio-img" src={imgSrc} alt="display" />
+        <h4>{title}</h4>
       </div>
       <input
         type="range"
         min="0"
-        max={duration}
+        max={isNaN(duration) ? "100" : duration.toString()} // Provide a default max value if duration is NaN
         value={currentTime}
         onChange={handleSeek}
       />
-
-      <audio ref={audioRef} src={audioSrc} />
 
       <div className="track-duration">
         <p>{formatDuration(currentTime) + " "}</p>

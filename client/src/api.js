@@ -1,7 +1,7 @@
 const fetchJSON = async (path, method, inputData) => {
     let fetched;
     if (method === "POST") {
-      fetched = await fetch(import.meta.env.VITE_BASE_URL + "api/" + path, {
+      fetched = await fetch(import.meta.env.VITE_BASE_URL + "/api/" + path, {
         method: method,
         headers: {
           "Content-Type": "application/json",
@@ -10,7 +10,7 @@ const fetchJSON = async (path, method, inputData) => {
         body: JSON.stringify(inputData),
       }).then((response) => response.json());
     } else if (method === "GET") {
-      fetched = await fetch(import.meta.env.VITE_BASE_URL + "api/" + path, {
+      fetched = await fetch(import.meta.env.VITE_BASE_URL + "/api/" + path, {
         method: method,
         headers: {
           "Content-Type": "application/json",

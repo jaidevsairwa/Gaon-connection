@@ -22,7 +22,7 @@ export const Gaon_Broadcast = () => {
   const fetchHandler = async () => {
     try {
       const { data } = await axios.get(
-        `http://45.126.126.209:1337/api/geon-podecasts?populate=*`,
+        `${import.meta.env.VITE_BASE_URL}//api/geon-podecasts?populate=*`,
         Auth
       );
       setData(data?.data);

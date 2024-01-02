@@ -14,7 +14,6 @@ export const StoryCanvas = ({ show, setShow, id }) => {
   useEffect(() => {
     if (show) {
       getSingleStory(setData, id);
-      // Reset current story index when showing the modal
       setCurrentStory(0);
     }
   }, [show, id]);
@@ -22,7 +21,7 @@ export const StoryCanvas = ({ show, setShow, id }) => {
   let images;
   if (data) {
     images = data?.attributes?.video?.data?.map((i) => ({
-      url: `http://45.126.126.209:1337${i?.attributes?.url}`,
+      url: `${import.meta.env.VITE_BASE_URL}/${i?.attributes?.url}`,
       type: i?.attributes?.mime === "video/mp4" ? "video" : "image",
     }));
   }
@@ -37,20 +36,17 @@ export const StoryCanvas = ({ show, setShow, id }) => {
     );
   };
 
-
   return (
     <Modal
       show={show}
       fullscreen={true}
       onHide={() => {
-        console.log("Hiding modal");
         setShow(false);
       }}
       style={{ padding: 0 }}
     >
       <Modal.Body
         className="Story-Modal"
-        style={{ background: " linear-gradient(#e66465, #9198e5)" }}
       >
         <div className="close">
           <img src={close} onClick={() => setShow(false)} />

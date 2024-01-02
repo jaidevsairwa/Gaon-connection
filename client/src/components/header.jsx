@@ -4,7 +4,7 @@ import logo from "../assets/lg.png";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState('English');
+  const [selectedLanguage, setSelectedLanguage] = useState("English");
 
   const handleLanguageChange = (e) => {
     setSelectedLanguage(e.target.value);
@@ -12,19 +12,16 @@ const Header = () => {
   return (
     <div>
       <header className="header">
-        {/* <div className="logo">
-        <img src={logo} width={70} height={70} style={{background:"red"}}/>
-        </div> */}
         <nav className="nav">
           <ul>
             <li>
               <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="teacher-connection">Teacher Connection</a>
+              <a href="/category/9">Teacher Connection</a>
             </li>
             <li>
-              <a href="kisaan-connection">Kisaan Connection</a>
+              <a href="/category/2">Kisaan Connection</a>
             </li>
             <li style={{ paddingRight: "35px", marginRight: "50px" }}>
               <Link href="/">
@@ -59,10 +56,10 @@ const Header = () => {
           color: "black",
           textAlign: "center",
           width: "100%",
-          lineHeight:"1.2"
+          lineHeight: "1.2",
         }}
       >
-        सुनिए गाँव की आवाज़ <br />  बनिए गाँव की आवाज़
+        सुनिए गाँव की आवाज़ <br /> बनिए गाँव की आवाज़
       </span>
     </div>
   );

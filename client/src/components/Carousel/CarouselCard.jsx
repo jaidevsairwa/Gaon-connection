@@ -42,7 +42,7 @@ const CarouselCard = ({ data, link, indiLink }) => {
           {data?.slice(1).map((i, index) => (
             <div className="card" key={index}>
               <img
-                src={`http://45.126.126.209:1337${i?.attributes?.images?.data?.[0]?.attributes?.url}`}
+                src={`${import.meta.env.VITE_BASE_URL}/${i?.attributes?.images?.data?.[0]?.attributes?.url}`}
                 alt="Card Image"
                 className="card-image"
               />

@@ -6,7 +6,7 @@
   }
   
   .image-item {
-    width: 26%; /* 33.33% for three items in a row with 20px spacing */
+    width:26%; /* 33.33% for three items in a row with 20px spacing */
     /* margin: 10px; */
     text-align: center;
     margin-left: 0;
@@ -14,7 +14,7 @@
   }
   
   .image-item img {
-    object-fit: cover;
+    object-fit:fill;
     height: 300px;
     width: 100%;
     border-radius: 20px;
@@ -44,9 +44,14 @@
     .image-gallery{
       margin:20px 0 10px;
     }
+    .image-item{
+      width: 100%;
+    }
     .image-item img {
-      width: auto;
-      height: 100px;
+      width: 100px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
     }
     .image-item p{
       padding-top: 6px;

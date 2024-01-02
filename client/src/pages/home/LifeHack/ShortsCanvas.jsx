@@ -11,7 +11,7 @@ const ShortsCanvas = ({ show, setShow, data }) => {
   const [activeVideo, setActiveVideo] = useState(null);
   const swiperRef = useRef(null);
 
-  const base = "http://45.126.126.209:1337";
+  const base = `${import.meta.env.VITE_BASE_URL}`
 
   useEffect(() => {
     if (activeVideo) {
