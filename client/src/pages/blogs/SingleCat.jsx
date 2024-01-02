@@ -20,6 +20,7 @@ const SingleCat = () => {
     maxWidth: "100%",
     margin: "auto",
     width: "99%",
+    aspectRatio: "16/9"
   };
   const date = new Date(data?.attributes?.publishedAt);
   const forDate = date.toLocaleDateString("en-GB", {
@@ -42,13 +43,13 @@ const SingleCat = () => {
   return (
     <div className="divStyle">
       <div>
-        <h6 style={{ fontSize: "28px" }}>{data?.attributes?.Title}</h6>
-        <div
-          className="author"
-          onClick={() =>
+        <h1>{data?.attributes?.Title}</h1>
+        <h2>{data?.attributes?.sub_title}</h2>
+
+        <div className="author">
+          <div onClick={() =>
             navigate(`../creator/${data?.attributes?.user_info?.data?.id}`)
-          }
-        >
+          }>
           <img
             className="auth-img"
             src={`${import.meta.env.VITE_BASE_URL}${
@@ -61,8 +62,11 @@ const SingleCat = () => {
             {" "}
             {data?.attributes?.user_info?.data?.attributes?.username}
           </span>
+          </div>
           <span className="cre-date">{forDate}</span>
         </div>
+
+
         <img
           style={imgStyle}
           src={`${import.meta.env.VITE_BASE_URL}${
@@ -70,10 +74,6 @@ const SingleCat = () => {
           }`}
           alt=""
         />
-        {/* { data?.attributes?.embed !== null && (
-          <Tweet id={data?.attributes?.embed}></Tweet>
-        )
-        } */}
       </div>
 
       <div className="category_content" style={{ textAlign: "justify" }}>

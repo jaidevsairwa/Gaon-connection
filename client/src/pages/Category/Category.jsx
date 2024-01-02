@@ -31,7 +31,7 @@ const Category = () => {
               onClick={() => navigate(`/indi-category/${i.id}`)}
             >
               <img
-                src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.images?.data[0].attributes?.url}`}
+                src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.images.data?.[0]?.attributes?.formats?.small.url}`}
                 alt=""
               />
               <div className="article_content">
@@ -41,7 +41,7 @@ const Category = () => {
                     {i?.attributes?.Desc?.slice(0, 200)}
                   </ReactMarkdown> */}
                 {/* </p> */}
-                <div dangerouslySetInnerHTML={{ __html: i?.attributes?.Desc?.slice(0, 200) }} />
+                <p>{i?.attributes?.sub_title}</p>
               </div>
             </div>
           ))}
@@ -56,7 +56,7 @@ const Category = () => {
           onClick={() => navigate(`/indi-category/${i.id}`)}
         >
           <img
-            src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.images?.data[0].attributes?.url}`}
+                src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.images.data?.[0]?.attributes?.formats?.small.url}`}
             alt=""
           />
           <div className="article_content">
@@ -64,7 +64,8 @@ const Category = () => {
                 <div className="category_content" style={{ textAlign: "justify" }}>
                   {/* <div dangerouslySetInnerHTML={{ __html: i?.attributes?.Desc?.slice(0, 300) }} /> */}
                   {/* <ReactMarkdown> {i?.attributes?.Desc?.slice(0, 300)}  </ReactMarkdown> */}
-                  <div dangerouslySetInnerHTML={{ __html: i?.attributes?.Desc?.slice(0, 300) }} />
+                  {/* <div dangerouslySetInnerHTML={{ __html: i?.attributes?.Desc?.slice(0, 300) }} /> */}
+                  <p>{i?.attributes?.sub_title}</p>
                 </div>
           </div>
         </div>
