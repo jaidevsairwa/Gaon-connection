@@ -56,12 +56,10 @@ const cardData = [
 const ImageGallery = ({ data }) => {
   return (
     <>
-      {data?.map((item, index) => (
-        <ImageCard
-          key={index}
-          image={item?.attributes?.image?.data}
-        />
-      ))}
+      {data?.length > 0 &&
+        data?.map((item, index) => (
+          <ImageCard key={index} image={item?.attributes?.image?.data} />
+        ))}
     </>
   );
 };

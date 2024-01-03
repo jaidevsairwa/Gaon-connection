@@ -47,7 +47,7 @@ const AllStories = () => {
           ))}
         </ul>
       </div>
-      <div className="strory--container">
+      <div className="strory--container forWrap">
         {filterData?.map((item) => (
           <div
             key={item.id}

@@ -1,11 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:wght@600&display=swap");
 
-* h1,h2,h3,h4,h5,h6,ul{
-font-family: 'Alegreya', serif;
+* h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+  font-family: "Alegreya", serif;
 }
 
-* p{
-  font-family: 'IM Fell English', serif;
+* p {
+  font-family: "IM Fell English", serif;
 }
 .header {
   background-color: #fc6224;
@@ -174,7 +180,7 @@ font-family: 'Alegreya', serif;
     flex-direction: column;
   }
   .text-container h2 {
-    font-size: 25px;
+    font-size: 26px;
   }
   .text-container p {
     font-size: 15px;
@@ -465,8 +471,11 @@ font-family: 'Alegreya', serif;
   display: flex;
   padding: 20px;
   align-items: center;
-  gap:10px;
+  gap: 10px;
   justify-content: center;
+}
+.forWrap {
+  flex-wrap: wrap;
 }
 .strory--container1 {
   display: flex;
@@ -481,10 +490,10 @@ font-family: 'Alegreya', serif;
     width: 100%;
     overflow: scroll;
   }
-        .strory--container1 {
-          width: 100%;
-          overflow: scroll;
-        }
+  .strory--container1 {
+    width: 100%;
+    overflow: scroll;
+  }
   .story_container {
     /* display: absolute; */
     width: 120px;
@@ -495,8 +504,8 @@ font-family: 'Alegreya', serif;
     font-size: 12px;
   }
   .text-container-box {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 400;
   }
 }
 
@@ -624,7 +633,19 @@ font-family: 'Alegreya', serif;
   list-style: none;
   margin: 0;
 }
-.active{
+.active {
   color: red;
   font-size: 22px;
+}
+
+@media (max-width: 768px) {
+  .container-box {
+    align-items: flex-start;
+  }
+  .text-container-box h2 {
+    font-size: 16px;
+  }
+  .card .card-heading {
+    font-size: 14px !important;
+  }
 }

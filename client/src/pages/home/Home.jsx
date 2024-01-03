@@ -54,6 +54,7 @@ const Home = () => {
 
   window.scrollTo(0, 0);
 
+
   useEffect(() => {
     get_all_category(selectedLanguage, setCategory);
   }, [selectedLanguage]);

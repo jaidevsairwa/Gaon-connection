@@ -29,15 +29,13 @@ const AllHack = () => {
   };
 
   useEffect(() => {
-    // fetchHandler();
     getStory(setStory)
   }, []);
 
-console.log(story);
   return (
     <div>
       <h1 className="imageBox_header">लाइफ़ हैक्स</h1>
-      <div className="strory--container">
+      <div className="strory--container forWrap">
         {story?.length > 0 &&
         story?.map((item) => (
           <div

@@ -33,7 +33,7 @@ const SingleCat = () => {
     get_single_category(selectedLanguage, setData, id, setUser);
     const tww = () =>{
       if (data?.attributes?.Desc){
-        document.querySelector("twitter-tweet").load("https://platform.twitter.com/widgets.js")
+        document?.querySelector("twitter-tweet")?.load("https://platform.twitter.com/widgets.js")
       }
       else{}
     }
