@@ -1,40 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { getStory  } from "../../../Repo/Apis";
+import { getStory, get_videoName  } from "../../../Repo/Apis";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const AllHack = () => {
   const [story, setStory] = useState([]);
+  const [title,setTitle] = useState([]);
   const navigate = useNavigate();
-  const Auth = {
-    headers: {
-      Authorization: "Bearer " + import.meta.env.VITE_TOKEN,
-    },
-  };
   const base = import.meta.env.VITE_BASE_URL;
-  const fetchHandler = async () => {
-    // try {
-    //   const data  = await axios.get(
-    //     `${base}/api/reel?populate=*`,
-    //     Auth
-    //   );
-    //   console.log(data);
-    //   setStory(data.data);
-    // } catch { console.log("error")}
-    const data = await axios.get(
-        `${base}/api/reel?populate=*`,
-        Auth
-      );
-      setStory(data.data.data);
-  };
 
   useEffect(() => {
-    getStory(setStory)
+    getStory(setStory);
+    get_videoName(setTitle)
   }, []);
 
   return (
     <div>
-      <h1 className="imageBox_header">लाइफ़ हैक्स</h1>
+      <h1 className="imageBox_header">{title.story}</h1>
       <div className="strory--container forWrap">
         {story?.length > 0 &&
         story?.map((item) => (

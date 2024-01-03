@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { get_Story, getStoryCategory } from "../../../Repo/Apis";
+import { get_Story, getStoryCategory,get_videoName } from "../../../Repo/Apis";
 import { useNavigate } from "react-router-dom";
 
 const AllStories = () => {
   const [story, setStory] = useState([]);
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
+  const [title, setTitle] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     get_Story(setStory);
     getStoryCategory(setData);
+    get_videoName(setTitle);
   }, []);
 
   const base = `${import.meta.env.VITE_BASE_URL}`;
@@ -25,7 +27,7 @@ const AllStories = () => {
 
   return (
     <div>
-      <h1 className="imageBox_header">Web-Stories</h1>
+      <h1 className="imageBox_header">{title.reels}</h1>
 
       <div className="filteration">
         <ul>
