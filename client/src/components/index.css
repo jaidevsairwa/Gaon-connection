@@ -467,7 +467,7 @@ ul {
   background-position: center;
   cursor: pointer;
 }
-.strory--container {
+.story--container {
   display: flex;
   padding: 20px;
   align-items: center;
@@ -477,20 +477,19 @@ ul {
 .forWrap {
   flex-wrap: wrap;
 }
-.strory--container1 {
+.story--container-home {
   display: flex;
-  padding: 20px;
+  padding: 20px 10px;
   align-items: center;
   gap: 10px;
-  justify-content: center;
 }
 
 @media screen and (max-width: 464px) {
-  .strory--container {
+  .story--container {
     width: 100%;
     overflow: scroll;
   }
-  .strory--container1 {
+  .story--container-home {
     width: 100%;
     overflow: scroll;
   }

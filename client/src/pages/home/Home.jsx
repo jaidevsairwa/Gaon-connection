@@ -154,7 +154,7 @@ const Home = () => {
               <div className="container_cardlist">
                 <h1 className="imageBox_header">{video_title.story}</h1>
 
-                <div className="strory--container1">
+                <div className="story--container-home">
                   {story?.slice(0, 6)?.map((item) => (
                     <div
                       key={item.id}
@@ -258,7 +258,7 @@ const Home = () => {
                   i?.attributes?.category_data_hindis?.data?.[0]?.attributes
                     ?.Title
                 }
-                desc={i?.attributes?.category_data_hindis?.data?.[0]?.attributes?.Desc.slice(
+                desc={i?.attributes?.category_data_hindis?.data?.[0]?.attributes?.sub_title.slice(
                   0,
                   200
                 )}
@@ -272,7 +272,7 @@ const Home = () => {
                 title={
                   i?.attributes?.category_data?.data?.[0]?.attributes?.Title
                 }
-                desc={i?.attributes?.category_data?.data?.[0]?.attributes?.Desc.slice(0,200)}
+                desc={i?.attributes?.category_data?.data?.[0]?.attributes?.sub_title.slice(0,200)}
                 image={`${base}${i?.attributes?.category_data?.data?.[0]?.attributes?.images?.data?.[0]?.attributes?.url}`}
                 link={`/indi-category/${i?.attributes?.category_data?.data?.[0]?.id}`}
               />
@@ -292,35 +292,6 @@ const Home = () => {
                       autoplay={true}
                       autoplaySpeed={500}
                     >
-                      {/* {i?.attributes?.category_data_hindis?.data >0 && (
-                          <div
-                            className="card"
-                            key={index}
-                            onClick={() =>
-                              navigate(`/indi-category/${item?.id}`)
-                            }
-                          >
-                            <img
-                              src={`${base}${item?.attributes?.images?.data?.[0]?.attributes?.url}`}
-                              alt=""
-                              className="card-image"
-                            />
-                            <div className="card-content">
-                              <h2 className="card-heading">
-                                {item?.attributes?.Title}
-                              </h2>
-                              <span
-                                style={{ color: "#0CC5FF" }}
-                                onClick={() =>
-                                  navigate(`/indi-category/${item?.id}`)
-                                }
-                              >
-                                {" "}
-                                Read More
-                              </span>
-                            </div>
-                          </div>
-                        )} */}
                     {i?.attributes?.category_data_hindis?.data
                       ?.slice(1)
                       .map((item) => (

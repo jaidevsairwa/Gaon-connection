@@ -16,7 +16,7 @@ const AllHack = () => {
   return (
     <div>
       <h1 className="imageBox_header">{title.story}</h1>
-      <div className="strory--container forWrap">
+      <div className="story--container forWrap">
         {story?.length > 0 &&
         story?.map((item) => (
           <div
@@ -24,7 +24,6 @@ const AllHack = () => {
             onClick={() => navigate(`/video-story/${item.id}`)}
             style={{ textAlign: "center" }}
           >
-            {console.log(item.id)}
             <div
               className="story_container"
               style={{

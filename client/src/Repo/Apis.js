@@ -112,7 +112,7 @@ export const get_Story = async (setResponse) => {
 export const getStory = async (setResponse) => {
   try {
     const response = await axios.get(`${Baseurl}/api/reel?populate=*`, Auth);
-    setResponse(response.data.data.data);
+    setResponse(response.data.data);
   } catch { }
 };
 
@@ -227,23 +227,25 @@ export const getAuthor = async (id, setresponse, setCate) => {
   } catch {}
 };
 
-export const get_post = async (id, setresponse) => {
-  try {
-    const res = await axios.get(
-      `${import.meta.env.VITE_BASE_URL}/api/categorydata/${id}?populate=*`,
-      Auth
-    );
-    if (res.length > 0) {
+export const get_post = async (type , id, setresponse) => {
+  if(type === "hi"){
+    try{
+      const res = await axios.get(
+        `${import.meta.env.VITE_BASE_URL
+        }/api/hindi-category-datas/${id}?populate=*`,
+        Auth
+      );
       setresponse(res.data.data);
-    }
-  } catch {
-    const res = await axios.get(
-      `${
-        import.meta.env.VITE_BASE_URL
-      }/api/hindi-category-datas/${id}?populate=*`,
-      Auth
-    );
-    setresponse(res.data.data);
+    }catch{}
+  }
+  else {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/categorydata/${id}?populate=*`,
+        Auth
+      );
+        setresponse(res.data.data);
+    } catch { }
   }
 };
 

@@ -39,7 +39,7 @@ const LifeHack = () => {
       <div className="life_container">
         <h2>{video_title.story}</h2>
         <div className="container_cardlist">
-          <div className="strory--container">
+          <div className="story--container-home">
             {lifeHack?.slice(0, 6)?.map((item) => (
               <div
                 key={item.id}

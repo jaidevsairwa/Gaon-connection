@@ -8,7 +8,6 @@ const AuthorStory = () => {
     const { id } = useParams();
     const [data, setData] = useState({});
     const { selectedLanguage } = useLanguage();
-    const [user, setUser] = useState([])
     const navigate = useNavigate();
 
     const imgStyle = {
@@ -24,7 +23,7 @@ const AuthorStory = () => {
     })
 
     useEffect(() => {
-        get_post(id, setData);
+        get_post(selectedLanguage, id, setData);
     }, [selectedLanguage, id]);
 
     return (
