@@ -1,40 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { ImageCard1, ImageCard2 } from '../../public/Images'
-// import Audio from '../home/Audio/Audio'
-import { isMobile } from "react-device-detect";
-import Contact from "../../components/contact";
-import MobileHeader from "../home/Header/header";
-import Header from "../../components/header";
-import Footer from "../../components/Footer/Footer";
-import audioFile from "../../assets/audio/HueBechain.mp3";
-import audioFile1 from "../../assets/audio/TeriMitti.mp3";
-import AudioPlayer from 'react-audio-player';
-import image from "../../assets/Images/audio.jpg";
 import './gaon_audio.scss'
 import { fetchJSON } from "../../api";
-
-const cardData = [
-  {
-    id: "1",
-    image: image,
-    audio: audioFile,
-  },
-  {
-    id: "2",
-    image: image,
-    audio: audioFile1,
-  },
-  {
-    id: "3",
-    image: image,
-    audio: audioFile,
-  },
-  {
-    id: "4",
-    image: image,
-    audio: audioFile1,
-  },
-]
 
 const AudioPlayer1 = ({ url, id }) => {
   const [isPlaying, setIsPlaying] = useState(false);
