@@ -16,7 +16,6 @@ ul {
 .header {
   background-color: #fc6224;
   color: white;
-  height: 60px;
   padding: 0px 25px;
 }
 .header span {
@@ -67,7 +66,7 @@ ul {
   display: flex;
   flex-grow: 1;
   justify-content: space-between;
-  margin-top: 18px;
+  margin-top: 10px;
 }
 
 .nav li {
@@ -322,16 +321,7 @@ ul {
   align-items: center;
   background-color: #000;
   color: white;
-  padding: 10px 20px;
-}
-.contact img {
-  margin-right: 10px;
-}
-
-.left {
-  display: flex;
-  gap: 5px;
-  margin-left: 40px;
+  padding: 4px 5px;
 }
 
 .right {

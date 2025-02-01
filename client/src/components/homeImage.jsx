@@ -16,7 +16,7 @@ const ImageGallery = ({ data }) => {
 const ImageCard = ({ image, index }) => {
   return (
     <div className="carousel_container">
-      {image?.map((item) => (
+      {image?.map((item,index) => (
         <div className="picture-container" key={index}>
           <img
             src={`${import.meta.env.VITE_BASE_URL}${item?.attributes?.url}`}

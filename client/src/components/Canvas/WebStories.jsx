@@ -26,7 +26,7 @@ const WebStories = () => {
     }));
   }
 
-  console.log(data);
+  console.log(images);
   const handleNext = () => {
     setCurrentStory((prevIndex) => (prevIndex + 1) % images.length);
   };

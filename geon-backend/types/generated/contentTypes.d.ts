@@ -677,38 +677,6 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiAamdaniBhadayeAamdaniBhadaye extends Schema.CollectionType {
-  collectionName: 'aamdani_bhadayes';
-  info: {
-    singularName: 'aamdani-bhadaye';
-    pluralName: 'aamdani-bhadayes';
-    displayName: 'Aamdani Bhadaye';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String & Attribute.Required;
-    Desc: Attribute.RichText & Attribute.Required;
-    images: Attribute.Media & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::aamdani-bhadaye.aamdani-bhadaye',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::aamdani-bhadaye.aamdani-bhadaye',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiAdvertisementBanner1AdvertisementBanner1
   extends Schema.SingleType {
   collectionName: 'advertisement_banner_1s';
@@ -1012,7 +980,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   info: {
     singularName: 'category';
     pluralName: 'categories';
-    displayName: 'create Category';
+    displayName: 'English Category';
     description: '';
   };
   options: {
@@ -1048,19 +1016,14 @@ export interface ApiCategoryDataCategoryData extends Schema.CollectionType {
   info: {
     singularName: 'category-data';
     pluralName: 'categorydata';
-    displayName: 'category-data';
+    displayName: 'English Data';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    category_name: Attribute.Relation<
-      'api::category-data.category-data',
-      'oneToOne',
-      'api::category.category'
-    >;
-    Name: Attribute.String;
+    Title: Attribute.String;
     desc: Attribute.RichText;
     link: Attribute.String;
     images: Attribute.Media;
@@ -1088,7 +1051,7 @@ export interface ApiCategoryHindiCategoryHindi extends Schema.CollectionType {
   info: {
     singularName: 'category-hindi';
     pluralName: 'category-hindis';
-    displayName: 'create  Category Hindi';
+    displayName: 'Hindi Category';
     description: '';
   };
   options: {
@@ -1112,40 +1075,6 @@ export interface ApiCategoryHindiCategoryHindi extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::category-hindi.category-hindi',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiChangeMakerChangeMaker extends Schema.CollectionType {
-  collectionName: 'change_makers';
-  info: {
-    singularName: 'change-maker';
-    pluralName: 'change-makers';
-    displayName: 'Change-maker page';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String;
-    Desc: Attribute.RichText;
-    link: Attribute.String;
-    images: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::change-maker.change-maker',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::change-maker.change-maker',
       'oneToOne',
       'admin::user'
     > &
@@ -1180,41 +1109,6 @@ export interface ApiELibraryELibrary extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::e-library.e-library',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiEnglishManufactureEnglishManufacture
-  extends Schema.CollectionType {
-  collectionName: 'english_manufactures';
-  info: {
-    singularName: 'english-manufacture';
-    pluralName: 'english-manufactures';
-    displayName: 'English-Manufacture';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    Desc: Attribute.RichText;
-    images: Attribute.Media;
-    link: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::english-manufacture.english-manufacture',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::english-manufacture.english-manufacture',
       'oneToOne',
       'admin::user'
     > &
@@ -1286,79 +1180,13 @@ export interface ApiGaonTvGaonTv extends Schema.CollectionType {
   };
 }
 
-export interface ApiHindiAamdaniBhadayeHindiAamdaniBhadaye
-  extends Schema.CollectionType {
-  collectionName: 'hindi_aamdani_bhadayes';
-  info: {
-    singularName: 'hindi-aamdani-bhadaye';
-    pluralName: 'hindi-aamdani-bhadayes';
-    displayName: 'Hindi Aamdani Bhadaye';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    Desc: Attribute.RichText & Attribute.Required;
-    images: Attribute.Media & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::hindi-aamdani-bhadaye.hindi-aamdani-bhadaye',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::hindi-aamdani-bhadaye.hindi-aamdani-bhadaye',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiHindiBannerHindiBanner extends Schema.CollectionType {
-  collectionName: 'hindi_banners';
-  info: {
-    singularName: 'hindi-banner';
-    pluralName: 'hindi-banners';
-    displayName: 'Hindi Banner';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Name: Attribute.String;
-    HindiDescription: Attribute.Text;
-    images: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::hindi-banner.hindi-banner',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::hindi-banner.hindi-banner',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiHindiCategoryDataHindiCategoryData
   extends Schema.CollectionType {
   collectionName: 'hindi_category_datas';
   info: {
     singularName: 'hindi-category-data';
     pluralName: 'hindi-category-datas';
-    displayName: 'Category Data Hindi';
+    displayName: 'Hindi Data';
     description: '';
   };
   options: {
@@ -1391,34 +1219,29 @@ export interface ApiHindiCategoryDataHindiCategoryData
   };
 }
 
-export interface ApiHindiChangeMakerHindiChangeMaker
-  extends Schema.CollectionType {
-  collectionName: 'hindi_change_makers';
+export interface ApiImageGaonPodcastImageGaonPodcast extends Schema.SingleType {
+  collectionName: 'image_gaon_podcasts';
   info: {
-    singularName: 'hindi-change-maker';
-    pluralName: 'hindi-change-makers';
-    displayName: 'Hindi Change Maker';
-    description: '';
+    singularName: 'image-gaon-podcast';
+    pluralName: 'image-gaon-podcasts';
+    displayName: 'Top icons : podcast';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Title: Attribute.String;
-    Desc: Attribute.RichText;
-    images: Attribute.Media;
-    link: Attribute.String;
+    image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::hindi-change-maker.hindi-change-maker',
+      'api::image-gaon-podcast.image-gaon-podcast',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::hindi-change-maker.hindi-change-maker',
+      'api::image-gaon-podcast.image-gaon-podcast',
       'oneToOne',
       'admin::user'
     > &
@@ -1426,32 +1249,30 @@ export interface ApiHindiChangeMakerHindiChangeMaker
   };
 }
 
-export interface ApiHindiKisaanConnectionHindiKisaanConnection
-  extends Schema.CollectionType {
-  collectionName: 'hindi_kisaan_connections';
+export interface ApiImageGaonRadioImageGaonRadio extends Schema.SingleType {
+  collectionName: 'image_gaon_radios';
   info: {
-    singularName: 'hindi-kisaan-connection';
-    pluralName: 'hindi-kisaan-connections';
-    displayName: 'Hindi Kisaan Connection';
+    singularName: 'image-gaon-radio';
+    pluralName: 'image-gaon-radios';
+    displayName: 'Top icons : radio';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Title: Attribute.String;
-    Desc: Attribute.RichText & Attribute.Required;
-    images: Attribute.Media & Attribute.Required;
+    image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::hindi-kisaan-connection.hindi-kisaan-connection',
+      'api::image-gaon-radio.image-gaon-radio',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::hindi-kisaan-connection.hindi-kisaan-connection',
+      'api::image-gaon-radio.image-gaon-radio',
       'oneToOne',
       'admin::user'
     > &
@@ -1459,101 +1280,30 @@ export interface ApiHindiKisaanConnectionHindiKisaanConnection
   };
 }
 
-export interface ApiHindiTeacherConnectionHindiTeacherConnection
-  extends Schema.CollectionType {
-  collectionName: 'hindi_teacher_connections';
+export interface ApiImageGaonTvImageGaonTv extends Schema.SingleType {
+  collectionName: 'image_gaon_tvs';
   info: {
-    singularName: 'hindi-teacher-connection';
-    pluralName: 'hindi-teacher-connections';
-    displayName: 'Hindi Teacher Connection';
+    singularName: 'image-gaon-tv';
+    pluralName: 'image-gaon-tvs';
+    displayName: 'Top icons : TV';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Title: Attribute.String;
-    Desc: Attribute.RichText;
-    images: Attribute.Media & Attribute.Required;
+    image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::hindi-teacher-connection.hindi-teacher-connection',
+      'api::image-gaon-tv.image-gaon-tv',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::hindi-teacher-connection.hindi-teacher-connection',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiHindiTheChangemakerHindiTheChangemaker
-  extends Schema.CollectionType {
-  collectionName: 'hindi_the_changemakers';
-  info: {
-    singularName: 'hindi-the-changemaker';
-    pluralName: 'hindi-the-changemakers';
-    displayName: 'Hindi The Changemaker';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String;
-    Desc: Attribute.RichText;
-    images: Attribute.Media & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::hindi-the-changemaker.hindi-the-changemaker',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::hindi-the-changemaker.hindi-the-changemaker',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiKisaanConnectionKisaanConnection
-  extends Schema.CollectionType {
-  collectionName: 'kisaan_connections';
-  info: {
-    singularName: 'kisaan-connection';
-    pluralName: 'kisaan-connections';
-    displayName: 'Kisaan Connection';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String;
-    Desc: Attribute.RichText;
-    images: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::kisaan-connection.kisaan-connection',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::kisaan-connection.kisaan-connection',
+      'api::image-gaon-tv.image-gaon-tv',
       'oneToOne',
       'admin::user'
     > &
@@ -1776,72 +1526,6 @@ export interface ApiStoryCategoryStoryCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiTeacherConnectionTeacherConnection
-  extends Schema.CollectionType {
-  collectionName: 'teacher_connections';
-  info: {
-    singularName: 'teacher-connection';
-    pluralName: 'teacher-connections';
-    displayName: 'Teacher Connection';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String;
-    Desc: Attribute.RichText;
-    Images: Attribute.Media & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::teacher-connection.teacher-connection',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::teacher-connection.teacher-connection',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTheChangemakerTheChangemaker extends Schema.CollectionType {
-  collectionName: 'the_changemakers';
-  info: {
-    singularName: 'the-changemaker';
-    pluralName: 'the-changemakers';
-    displayName: 'the changemaker';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String;
-    Desc: Attribute.RichText;
-    images: Attribute.Media & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::the-changemaker.the-changemaker',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::the-changemaker.the-changemaker',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1858,7 +1542,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
-      'api::aamdani-bhadaye.aamdani-bhadaye': ApiAamdaniBhadayeAamdaniBhadaye;
       'api::advertisement-banner-1.advertisement-banner-1': ApiAdvertisementBanner1AdvertisementBanner1;
       'api::advertisement-banner-2.advertisement-banner-2': ApiAdvertisementBanner2AdvertisementBanner2;
       'api::advertisement-block-1.advertisement-block-1': ApiAdvertisementBlock1AdvertisementBlock1;
@@ -1871,27 +1554,19 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::category-data.category-data': ApiCategoryDataCategoryData;
       'api::category-hindi.category-hindi': ApiCategoryHindiCategoryHindi;
-      'api::change-maker.change-maker': ApiChangeMakerChangeMaker;
       'api::e-library.e-library': ApiELibraryELibrary;
-      'api::english-manufacture.english-manufacture': ApiEnglishManufactureEnglishManufacture;
       'api::gaon-radio.gaon-radio': ApiGaonRadioGaonRadio;
       'api::gaon-tv.gaon-tv': ApiGaonTvGaonTv;
-      'api::hindi-aamdani-bhadaye.hindi-aamdani-bhadaye': ApiHindiAamdaniBhadayeHindiAamdaniBhadaye;
-      'api::hindi-banner.hindi-banner': ApiHindiBannerHindiBanner;
       'api::hindi-category-data.hindi-category-data': ApiHindiCategoryDataHindiCategoryData;
-      'api::hindi-change-maker.hindi-change-maker': ApiHindiChangeMakerHindiChangeMaker;
-      'api::hindi-kisaan-connection.hindi-kisaan-connection': ApiHindiKisaanConnectionHindiKisaanConnection;
-      'api::hindi-teacher-connection.hindi-teacher-connection': ApiHindiTeacherConnectionHindiTeacherConnection;
-      'api::hindi-the-changemaker.hindi-the-changemaker': ApiHindiTheChangemakerHindiTheChangemaker;
-      'api::kisaan-connection.kisaan-connection': ApiKisaanConnectionKisaanConnection;
+      'api::image-gaon-podcast.image-gaon-podcast': ApiImageGaonPodcastImageGaonPodcast;
+      'api::image-gaon-radio.image-gaon-radio': ApiImageGaonRadioImageGaonRadio;
+      'api::image-gaon-tv.image-gaon-tv': ApiImageGaonTvImageGaonTv;
       'api::podcast-banner.podcast-banner': ApiPodcastBannerPodcastBanner;
       'api::podcast-cate.podcast-cate': ApiPodcastCatePodcastCate;
       'api::podcast-category.podcast-category': ApiPodcastCategoryPodcastCategory;
       'api::reels.reels': ApiReelsReels;
       'api::story.story': ApiStoryStory;
       'api::story-category.story-category': ApiStoryCategoryStoryCategory;
-      'api::teacher-connection.teacher-connection': ApiTeacherConnectionTeacherConnection;
-      'api::the-changemaker.the-changemaker': ApiTheChangemakerTheChangemaker;
     }
   }
 }

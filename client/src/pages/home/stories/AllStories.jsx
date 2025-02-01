@@ -49,7 +49,7 @@ const AllStories = () => {
           ))}
         </ul>
       </div>
-      <div className="strory--container forWrap">
+      <div className="story--container-home">
         {filterData?.map((item) => (
           <div
             key={item.id}
@@ -60,6 +60,7 @@ const AllStories = () => {
               className="story_container"
               style={{
                 backgroundImage: `url(${base}${item?.attributes?.images?.data?.[0]?.attributes?.url})`,
+                padding:"20px"
               }}
             ></div>
             <p style={{ color: "red", fontSize: "20px", fontWeight: "700" }}>

@@ -46,7 +46,7 @@ const SingleCat = () => {
         <h1>{data?.attributes?.Title}</h1>
         <h2>{data?.attributes?.sub_title}</h2>
 
-        <div className="author">
+        {/* <div className="author">
           <div onClick={() =>
             navigate(`../creator/${data?.attributes?.user_info?.data?.id}`)
           }>
@@ -64,7 +64,7 @@ const SingleCat = () => {
           </span>
           </div>
           <span className="cre-date">{forDate}</span>
-        </div>
+        </div> */}
 
 
         <img
@@ -78,7 +78,7 @@ const SingleCat = () => {
 
       <div className="category_content" style={{ textAlign: "justify" }}>
         {/* <div dangerouslySetInnerHTML={{ __html: data?.attributes?.Desc }} /> */}
-        <ReactMarkdown rehypePlugins={[rehypeRaw]} >{data?.attributes?.Desc}</ReactMarkdown>
+        <ReactMarkdown rehypePlugins={[rehypeRaw]} >{data?.attributes?.desc}</ReactMarkdown>
       </div>
     </div>
   );

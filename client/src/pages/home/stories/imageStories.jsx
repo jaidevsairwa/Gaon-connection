@@ -11,11 +11,17 @@ const VideoStory = () => {
   useEffect(() => {
     getSingleStory(setData, id);
   }, []);
+  
+  let images;
+  if (data) {
+    images = data?.attributes?.video?.data?.map((i) => ({
+      url: `${import.meta.env.VITE_BASE_URL}${i?.attributes?.url}`,
+      type: i?.attributes?.mime === "video/mp4" ? "video" : "image",
+    }));
+  }
 
-  const images = data?.attributes?.video?.data?.map((i) => ({
-    url: `${import.meta.env.VITE_BASE_URL}${i?.attributes?.url}`,
-    type: "video",
-  }));
+console.log(images);
+
 
 
   return (

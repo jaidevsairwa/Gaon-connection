@@ -4,7 +4,7 @@
   "info": {
     "singularName": "category-data",
     "pluralName": "categorydata",
-    "displayName": "category-data",
+    "displayName": "English Data",
     "description": ""
   },
   "options": {
@@ -12,12 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "category_name": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category"
-    },
-    "Name": {
+    "Title": {
       "type": "string"
     },
     "desc": {

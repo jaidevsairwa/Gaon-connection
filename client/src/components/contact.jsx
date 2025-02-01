@@ -21,9 +21,7 @@ const Contact = () => {
 	return (
 		<header className="contact">
 			<div className="left">
-				<img height={20} width={20} src={phone} className="text"></img>
-				<div className="text">Helpline No.</div>
-				<div className="text">+91-01234-56789</div>
+				<h2>Gaon Connection</h2>
 			</div>
 			<div className="right">
 				<select value={selectedLanguage} onChange={handleLanguageChange}>

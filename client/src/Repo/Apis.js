@@ -28,84 +28,11 @@ export const get_gardening = async (type, setResponse, setSingle) => {
   } catch {}
 };
 
-export const getAdd1 = async (setResponse) => {
-  try {
-    const response = await axios.get(
-      `${Baseurl}/api/advertisement-banner-1?populate=*`,
-      Auth
-    );
-    setResponse(response.data.data.attributes);
-  } catch {}
-};
-
-export const getAdd2 = async (setResponse) => {
-  try {
-    const response = await axios.get(
-      `${Baseurl}/api/advertisement-banner-2?populate=*`,
-      Auth
-    );
-    setResponse(response.data.data.attributes);
-  } catch {}
-};
-
-export const getBlockAdd1 = async (setResponse) => {
-  try {
-    const response = await axios.get(
-      `${Baseurl}/api/advertisement-block-1?populate=*`,
-      Auth
-    );
-    setResponse(response.data.data.attributes);
-  } catch {}
-};
-export const getBlockAdd2 = async (setResponse) => {
-  try {
-    const response = await axios.get(
-      `${Baseurl}/api/advertisement-block-2?populate=*`,
-      Auth
-    );
-    setResponse(response.data.data.attributes);
-  } catch {}
-};
-export const getBlockAdd3 = async (setResponse) => {
-  try {
-    const response = await axios.get(
-      `${Baseurl}/api/advertisement-block-3?populate=*`,
-      Auth
-    );
-    setResponse(response.data.data.attributes);
-  } catch {}
-};
-export const getBlockAdd4 = async (setResponse) => {
-  try {
-    const response = await axios.get(
-      `${Baseurl}/api/advertisement-block-4?populate=*`,
-      Auth
-    );
-    setResponse(response.data.data.attributes);
-  } catch {}
-};
-export const getBlockAdd5 = async (setResponse) => {
-  try {
-    const response = await axios.get(
-      `${Baseurl}/api/advertisement-block-5?populate=*`,
-      Auth
-    );
-    setResponse(response.data.data.attributes);
-  } catch {}
-};
-export const getBlockAdd6 = async (setResponse) => {
-  try {
-    const response = await axios.get(
-      `${Baseurl}/api/advertisement-block-6?populate=*`,
-      Auth
-    );
-    setResponse(response.data.data.attributes);
-  } catch {}
-};
 export const get_Story = async (setResponse) => {
   try {
     const response = await axios.get(`${Baseurl}/api/stories?populate=*`, Auth);
     setResponse(response.data.data);
+    
   } catch {}
 };
 
@@ -135,24 +62,24 @@ export const get_single_category = async (type, setResponse, id, setUser) => {
         }/api/hindi-category-datas/${id}?populate=*`,
         Auth
       );
-      const usr = res.data.data.attributes.user_info.data.id;
-      const userRes = await axios.get(
-        `${Baseurl}/api/user-infos/${usr}?populate[personalPhoto]=*`,
-        Auth
-      );
-      setUser(userRes.data.data);
+      // const usr = res.data.data.attributes.user_info.data.id;
+      // const userRes = await axios.get(
+      //   `${Baseurl}/api/user-infos/${usr}?populate[personalPhoto]=*`,
+      //   Auth
+      // );
+      // setUser(userRes.data.data);
       setResponse(res.data.data);
     } else {
       const res = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/api/categorydata/${id}?populate=*`,
         Auth
       );
-      const usr = res.data.data.attributes.user_info.data.id;
-      const userRes = await axios.get(
-        `${Baseurl}/api/user-infos/${usr}?populate[personalPhoto]=*`,
-        Auth
-      );
-      setUser(userRes.data.data);
+      // const usr = res.data.data.attributes.user_info.data.id;
+      // const userRes = await axios.get(
+      //   `${Baseurl}/api/user-infos/${usr}?populate[personalPhoto]=*`,
+      //   Auth
+      // );
+      // setUser(userRes.data.data);
       setResponse(res.data.data);
     }
   } catch {}
@@ -185,6 +112,7 @@ export const get_all_category = async (type, setResponse) => {
         }/api/category-hindis?populate[category_data_hindis][populate]=*`,
         Auth
       );
+      console.log(res.data.data);
       setResponse(res.data.data);
     } catch {}
   } else {
@@ -250,13 +178,13 @@ export const get_post = async (type , id, setresponse) => {
 };
 
 export const get_image = async (type, setResponse) => {
-  if (type === "gaon") {
+  if (type === "tv") {
     try {
       const res = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/api/image-gaon-tv?populate=*`,
         Auth
       );
-      setResponse(res?.data?.data?.attributes);
+      setResponse(res?.data?.data?.attributes.image?.data?.attributes);
     } catch {}
   } else if (type === "radio") {
     try {
@@ -264,15 +192,15 @@ export const get_image = async (type, setResponse) => {
         `${import.meta.env.VITE_BASE_URL}/api/image-gaon-radio?populate=*`,
         Auth
       );
-      setResponse(res?.data?.data?.attributes);
+      setResponse(res?.data?.data?.attributes.image?.data?.attributes);
     } catch {}
   } else if (type === "pod") {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/api/image-podcast?populate=*`,
+        `${import.meta.env.VITE_BASE_URL}/api/image-gaon-podcast?populate=*`,
         Auth
       );
-      setResponse(res?.data?.data?.attributes);
+      setResponse(res?.data?.data?.attributes.image?.data?.attributes);
     } catch {}
   }
 };

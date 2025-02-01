@@ -41,7 +41,7 @@ const Category = () => {
                     {i?.attributes?.Desc?.slice(0, 200)}
                   </ReactMarkdown> */}
                 {/* </p> */}
-                <p>{i?.attributes?.sub_title}</p>
+                <p>{i?.attributes?.desc}</p>
               </div>
             </div>
           ))}
@@ -65,7 +65,7 @@ const Category = () => {
                   {/* <div dangerouslySetInnerHTML={{ __html: i?.attributes?.Desc?.slice(0, 300) }} /> */}
                   {/* <ReactMarkdown> {i?.attributes?.Desc?.slice(0, 300)}  </ReactMarkdown> */}
                   {/* <div dangerouslySetInnerHTML={{ __html: i?.attributes?.Desc?.slice(0, 300) }} /> */}
-                  <p>{i?.attributes?.sub_title}</p>
+                  <p>{i?.attributes?.desc.slice(0,200)}</p>
                 </div>
           </div>
         </div>

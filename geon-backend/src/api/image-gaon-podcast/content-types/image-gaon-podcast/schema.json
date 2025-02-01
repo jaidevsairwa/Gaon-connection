@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "image_gaon_podcasts",
+  "info": {
+    "singularName": "image-gaon-podcast",
+    "pluralName": "image-gaon-podcasts",
+    "displayName": "Top icons : podcast"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
