@@ -1026,7 +1026,7 @@ export interface ApiCategoryDataCategoryData extends Schema.CollectionType {
     Title: Attribute.String;
     desc: Attribute.RichText;
     link: Attribute.String;
-    images: Attribute.Media;
+    image: Attribute.Media;
     main: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1194,7 +1194,7 @@ export interface ApiHindiCategoryDataHindiCategoryData
   };
   attributes: {
     Title: Attribute.String;
-    Desc: Attribute.RichText;
+    desc: Attribute.RichText;
     image: Attribute.Media & Attribute.Required;
     create_category_hindi: Attribute.Relation<
       'api::hindi-category-data.hindi-category-data',

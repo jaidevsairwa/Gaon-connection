@@ -15,12 +15,12 @@
     "Title": {
       "type": "string"
     },
-    "Desc": {
+    "desc": {
       "type": "richtext"
     },
     "image": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "allowedTypes": [
         "images"

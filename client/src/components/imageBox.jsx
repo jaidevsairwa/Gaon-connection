@@ -13,19 +13,17 @@ const ImageBox = (props) => {
         )}
         <div className="container-box">
           {props?.image && (
-            <div className="image-container-box">
-              <img
-                src={props?.image}
-                alt="Description of the image"
-                className="image-box"
-              />
-            </div>
+                          <img
+                          src={props?.image}
+                          alt="Description of the image"
+                          className="image-box"
+                        />
+            // <div className="image-container-box">
+
+            // </div>
           )}
           <div className="text-container-box">
-              {/* {props?.heading && <h1>{props?.heading}</h1>} */}
               {props?.title && <h2>{props?.title?.slice(0, 100)}...</h2>}
-              {/* { props?.desc &&  <ReactMarkdown>{props?.desc?.slice(0, 100)} </ReactMarkdown>} */}
-              {/* <div dangerouslySetInnerHTML={{ __html:  /> */}
               <p>{props?.desc?.slice(0, 100) }</p>
               {props?.link && (
                 <button

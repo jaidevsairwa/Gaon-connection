@@ -1,12 +1,12 @@
 .image-gallery {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     color: #000;
     margin: 40px 20px 10px;
   }
   
   .image-item {
-    width:26%; /* 33.33% for three items in a row with 20px spacing */
+    /* width:26%; */
     /* margin: 10px; */
     text-align: center;
     margin-left: 0;

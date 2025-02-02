@@ -31,7 +31,7 @@ const Category = () => {
               onClick={() => navigate(`/indi-category/${i.id}`)}
             >
               <img
-                src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.images.data?.[0]?.attributes?.formats?.small.url}`}
+                src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.image.data?.attributes?.formats?.small.url}`}
                 alt=""
               />
               <div className="article_content">
@@ -56,16 +56,13 @@ const Category = () => {
           onClick={() => navigate(`/indi-category/${i.id}`)}
         >
           <img
-                src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.images.data?.[0]?.attributes?.formats?.small.url}`}
+                src={`${import.meta.env.VITE_BASE_URL}${i?.attributes?.image.data?.attributes?.formats?.small.url}`}
             alt=""
           />
           <div className="article_content">
             <a className="heading-title">{i?.attributes?.Title} </a>
                 <div className="category_content" style={{ textAlign: "justify" }}>
-                  {/* <div dangerouslySetInnerHTML={{ __html: i?.attributes?.Desc?.slice(0, 300) }} /> */}
-                  {/* <ReactMarkdown> {i?.attributes?.Desc?.slice(0, 300)}  </ReactMarkdown> */}
-                  {/* <div dangerouslySetInnerHTML={{ __html: i?.attributes?.Desc?.slice(0, 300) }} /> */}
-                  <p>{i?.attributes?.desc.slice(0,200)}</p>
+                  <p>{i?.attributes?.desc.slice(0,200)}...</p>
                 </div>
           </div>
         </div>

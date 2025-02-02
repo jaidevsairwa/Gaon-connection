@@ -53,7 +53,7 @@ export const getSingleStory = async (setResponse, id) => {
   } catch {}
 };
 
-export const get_single_category = async (type, setResponse, id, setUser) => {
+export const get_single_category = async (type, setResponse, id) => {
   try {
     if (type === "hi") {
       const res = await axios.get(

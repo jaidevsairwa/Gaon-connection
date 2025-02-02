@@ -1,14 +1,9 @@
 import App from "../App";
+import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "../routes/ErrorScreen";
 import Home from "../pages/home/Home";
-import Radio from "../pages/radio/Radio";
-import { createBrowserRouter } from "react-router-dom";
 import Story from "../pages/home/stories/imageStories";
 import Reels from "../pages/home/LifeHack/Reels";
-import { Gaon_Tv } from "../pages/gaon-tv/Gaon_Tv";
-import { Gaon_Broadcast } from "../pages/gaon-broadcast/Gaon_Broad";
-import Gardening from "../pages/gardnening/gardening";
-import ChangeMaker from "../pages/changeMaker/changeMaker";
 import VideoStroy from "../pages/home/video/VideoStroy";
 import Podcast from "../pages/podcast/podcast";
 import SurveyReport from "../pages/surveyReport/survey";
@@ -43,26 +38,6 @@ export const routes = createBrowserRouter([
       {
         path: "/all-stories",
         element: <AllStories />,
-      },
-      {
-        path: "/radio",
-        element: <Radio />,
-      },
-      {
-        path: "/gaon-tv",
-        element: <Gaon_Tv />,
-      },
-      {
-        path: "/gaon-broadcast",
-        element: <Gaon_Broadcast />,
-      },
-      {
-        path: "/the-changemakers",
-        element: <Gardening />,
-      },
-      {
-        path: "/change-maker",
-        element: <ChangeMaker />,
       },
       {
         path: "/video-story/:id",

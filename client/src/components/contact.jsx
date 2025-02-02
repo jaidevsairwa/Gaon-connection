@@ -21,7 +21,7 @@ const Contact = () => {
 	return (
 		<header className="contact">
 			<div className="left">
-				<h2>Gaon Connection</h2>
+				<h2 href="/">Gaon Connection</h2>
 			</div>
 			<div className="right">
 				<select value={selectedLanguage} onChange={handleLanguageChange}>

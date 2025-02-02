@@ -15,7 +15,7 @@ const App = () => {
 			{isMobile ? null : <Contact />}
 			{isMobile ? <MobileHeader /> : <Header />}
 			{buildPages.includes(location.pathname) ? (
-				<div>
+				<div className="home-page">
 					<Outlet />
 				</div>
 			) : (

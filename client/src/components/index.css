@@ -26,6 +26,11 @@ ul {
   left: 20px;
   color: #000;
 }
+
+.home-page{
+  width: 75%;
+  margin: auto;
+}
 .txt {
   margin-left: 40px;
   color: #000;
@@ -34,8 +39,8 @@ ul {
   margin-bottom: 20px;
 }
 .carousel_container {
-  margin-bottom: 56px;
-  height: 460px;
+  margin: 56px auto;
+  height: 260px;
 }
 .react-multi-carousel-list {
   height: inherit !important;
@@ -86,6 +91,20 @@ ul {
 .container-box {
   font-size: 2rem;
   color: #000;
+}
+
+.podcast-button{
+  position: fixed;
+  bottom: 8%;
+  right: 5%;
+  background-color: #fc6224;
+  color: white;
+  width: 110px;
+  height: 98px;
+  border-radius: 10%;
+  border:none;
+  z-index: 1;
+
 }
 
 /* Responsive Styles */
@@ -204,20 +223,21 @@ ul {
 
 /* Image Styling */
 .image-container-box {
-  width: 50%;
+  /* width: 50%; */
   /* Take up half of the container */
-  padding: 20px 20px 20px 40px;
   box-sizing: border-box;
 }
 
 .image-box {
-  width: 100%;
+  padding: 20px 20px 10px 40px;
+  width: 50%;
   height: auto;
+  margin: auto;
 }
 
 /* Text Styling */
 .text-container-box {
-  width: 50%;
+  /* width: 50%; */
   /* Take up half of the container */
   padding: 20px 40px 20px 20px;
   box-sizing: border-box;
@@ -287,7 +307,7 @@ ul {
     padding: 5px 10px 5px 5px;
   }
   .image-box {
-    height: 100%;
+    width: 100%;
   }
   .text-container-box h2 {
     font-size: 17px;
@@ -475,6 +495,10 @@ ul {
 }
 
 @media screen and (max-width: 464px) {
+  .home-page{
+    width: 100%;
+    margin: auto;
+  }
   .story--container {
     width: 100%;
     overflow: scroll;
@@ -637,4 +661,5 @@ ul {
   .card .card-heading {
     font-size: 14px !important;
   }
+  
 }
